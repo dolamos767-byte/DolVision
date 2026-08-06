@@ -1,41 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title></title>
-	<meta charset="utf-8" />
-    <script src="Scripts/jquery-1.9.1.min.js"></script>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="Scripts/isRockFx.js"></script>
-    <script>
-        $(function () {
-            $('#ButtonCal').click(
-                function () {
-                    //取得用戶輸入的參數
-                    var para = { 'height': $('#txbHeight').val(), 'weight': $('#txbWeight').val() };
-                    //呼叫API
-                    ExecuteAPI('Example', 'BMI', para,
-			//呼叫WebAPI成功時運行的Call Back Function
-                        function (result) {
-                            alert(result.Data);
-                        }
-                        );
-                }
-                );
-        });
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TedaVision</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#111;
+color:white;
+text-align:center;
+}
+
+header{
+background:#000;
+padding:20px;
+font-size:30px;
+font-weight:bold;
+color:gold;
+}
+
+.hero{
+padding:50px 20px;
+}
+
+h1{
+font-size:40px;
+}
+
+p{
+font-size:20px;
+}
+
+.btn{
+display:inline-block;
+margin-top:20px;
+padding:15px 30px;
+background:gold;
+color:black;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+}
+
+footer{
+margin-top:60px;
+padding:20px;
+background:#000;
+}
+</style>
+
 </head>
+
 <body>
-    <div class="row" style="margin:10px">
-        <div class="col-md-12">
-            <div class="form-group">
-                身高:
-                <input id="txbHeight" class="form-control" placeholder="請輸入身高" />
-                體重:
-                <input id="txbWeight" class="form-control" placeholder="請輸入體重" />
-                <br />
-                <button class="btn btn-primary" id="ButtonCal">計算</button>
-            </div>
-        </div>
-    </div>
+
+<header>
+🦁 TedaVision
+</header>
+
+<section class="hero">
+<h1>Bienvenue sur TedaVision</h1>
+
+<p>
+Bienvenue sur mon site officiel.
+Découvrez mon univers, mes projets et mon parcours.
+</p>
+
+<a class="btn" href="#">Entrer</a>
+
+</section>
+
+<footer>
+© 2026 TedaVision - Tous droits réservés
+</footer>
+
 </body>
 </html>
