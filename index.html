@@ -68,15 +68,21 @@ margin-bottom:15px;
 }
 
 .photo{
-height:250px;
-width:250px;
-margin:20px auto;
-background:#ddd;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
+.photo{
+    width:280px;
+    height:360px;
+    margin:25px auto;
+    overflow:hidden;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
 }
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
 
 .values{
 display:flex;
@@ -151,7 +157,7 @@ sa patience et sa capacité à continuer malgré les défis de la vie.
 
 
 <div class="photo">
-Ajouter une photo
+    <img src="ternezan-tedaisha.jpg" alt="Ternezan Tedaisha Namara">
 </div>
 
 
@@ -229,22 +235,23 @@ peut permettre de réaliser de grandes choses.
 
 <div class="card">
 
-<h2>Écouter la musique</h2>
+<h2>🎵 Écouter la musique</h2>
 
 <p>
-Profitez de cette musique directement depuis Tedavision.
+Un moment musical dans l'univers de Tedavision.
 </p>
 
-<iframe width="100%" height="315"
-src="https://www.youtube.com/embed/_B1-W4vyP30"
-title="Musique Tedavision"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<audio controls>
+    <source src="musique-tedavision.mp3" type="audio/mpeg">
+    Votre navigateur ne supporte pas la lecture audio.
+</audio>
 
 </div>
 
   </section>
+
+
+
 
 <footer>
 
