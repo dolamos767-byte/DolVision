@@ -4,286 +4,527 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tedavision</title>
+<title>Tedavision | Ternezan Tedaisha Namara</title>
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-background:#f7f4ef;
-color:#333;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f1ec;
+    color:#222;
 }
+
+/* ===== HEADER ===== */
 
 header{
-background:linear-gradient(135deg,#7b0000,#d4af37);
-color:white;
-text-align:center;
-padding:70px 20px;
+    min-height:430px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
+    background:linear-gradient(135deg,#111 0%,#292929 55%,#8b6b32 100%);
+    color:white;
 }
 
-header h1{
-font-size:55px;
+.logo{
+    font-size:54px;
+    font-weight:bold;
+    letter-spacing:5px;
+    margin-bottom:12px;
 }
 
-header p{
-font-size:22px;
-margin-top:15px;
+.name{
+    font-size:22px;
+    letter-spacing:2px;
+    margin-bottom:18px;
 }
+
+.subtitle{
+    max-width:700px;
+    font-size:19px;
+    line-height:1.7;
+    color:#e8e8e8;
+}
+
+.line{
+    width:90px;
+    height:3px;
+    background:#d4af37;
+    margin:22px auto;
+}
+
+/* ===== NAVIGATION ===== */
 
 nav{
-background:#222;
-padding:15px;
-text-align:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#111;
+    padding:14px 10px;
+    text-align:center;
+    box-shadow:0 3px 15px rgba(0,0,0,.25);
 }
 
 nav a{
-color:white;
-text-decoration:none;
-margin:15px;
-}
-
-section{
-max-width:1000px;
-margin:auto;
-padding:30px 20px;
-}
-
-.card{
-background:white;
-padding:30px;
-margin:25px 0;
-border-radius:20px;
-box-shadow:0 5px 20px rgba(0,0,0,0.15);
-}
-
-h2{
-color:#8b0000;
-margin-bottom:15px;
-}
-
-.photo{
-.photo{
-    width:280px;
-    height:360px;
-    margin:25px auto;
-    overflow:hidden;
+    display:inline-block;
+    color:white;
+    text-decoration:none;
+    margin:6px 10px;
+    padding:10px 14px;
     border-radius:20px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+    font-size:14px;
+    transition:.3s;
 }
 
-.photo img{
+nav a:hover{
+    background:#d4af37;
+    color:#111;
+}
+
+/* ===== CONTAINER ===== */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:45px 20px;
+}
+
+/* ===== ACCUEIL ===== */
+
+.hero{
+    background:white;
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 8px 30px rgba(0,0,0,.12);
+    text-align:center;
+}
+
+.hero h2{
+    color:#8b0000;
+    font-size:32px;
+    margin-bottom:18px;
+}
+
+.hero p{
+    line-height:1.8;
+    max-width:750px;
+    margin:10px auto;
+    font-size:17px;
+}
+
+/* ===== PHOTO ===== */
+
+.photo-box{
     width:100%;
-    height:100%;
-    object-fit:cover;
+    max-width:500px;
+    margin:30px auto;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    background:#ddd;
+}
+
+.photo-box img{
+    width:100%;
     display:block;
-  }
+    height:auto;
+}
+
+/* ===== BOUTONS ===== */
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 24px;
+    background:#8b0000;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#d4af37;
+    color:#111;
+    transform:translateY(-2px);
+}
+
+/* ===== SECTIONS ===== */
+
+.section{
+    margin-top:35px;
+    background:white;
+    border-radius:25px;
+    padding:35px;
+    box-shadow:0 8px 30px rgba(0,0,0,.10);
+}
+
+.section h2{
+    color:#8b0000;
+    text-align:center;
+    font-size:30px;
+    margin-bottom:22px;
+}
+
+.section p{
+    line-height:1.9;
+    font-size:17px;
+    margin:12px 0;
+}
+
+/* ===== VALUES ===== */
 
 .values{
-display:flex;
-flex-wrap:wrap;
-gap:15px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+    margin-top:25px;
 }
 
 .value{
-background:#d4af37;
-color:white;
-padding:12px 20px;
-border-radius:20px;
+    padding:14px 22px;
+    border-radius:30px;
+    background:#d4af37;
+    color:#111;
+    font-weight:bold;
+}
+
+/* ===== MUSIC ===== */
+
+.music-box{
+    text-align:center;
+    background:linear-gradient(135deg,#111,#292929);
+    color:white;
+    border-radius:25px;
+    padding:35px 20px;
+}
+
+.music-box h2{
+    color:#d4af37;
+}
+
+.music-box p{
+    margin-bottom:25px;
+    line-height:1.7;
 }
 
 audio{
-width:100%;
-margin-top:20px;
+    width:100%;
+    max-width:600px;
 }
 
+/* ===== FOOTER ===== */
+
 footer{
-background:#222;
-color:white;
-text-align:center;
-padding:20px;
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    margin-top:50px;
+}
+
+footer strong{
+    color:#d4af37;
+}
+
+footer p{
+    margin:8px 0;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:600px){
+
+    .logo{
+        font-size:40px;
+        letter-spacing:3px;
+    }
+
+    .name{
+        font-size:18px;
+    }
+
+    .subtitle{
+        font-size:16px;
+    }
+
+    .hero,
+    .section{
+        padding:25px 18px;
+    }
+
+    .hero h2,
+    .section h2{
+        font-size:26px;
+    }
+
+    nav a{
+        margin:3px;
+        padding:8px 10px;
+        font-size:13px;
+    }
+
 }
 
 </style>
-
 </head>
 
 <body>
 
-    
+<!-- ===== EN-TÊTE ===== -->
+
 <header>
 
-<h1>Tedavision</h1>
+    <div class="logo">TEDAVISION</div>
 
-<p>
-Une femme de courage, de force et de résilience
-</p>
+    <div class="line"></div>
+
+    <div class="name">
+        Ternezan Tedaisha Namara
+    </div>
+
+    <div class="subtitle">
+        Une histoire de courage, de résilience,
+        de dignité et de détermination.
+    </div>
 
 </header>
 
 
+<!-- ===== MENU ===== -->
+
 <nav>
 
-<a href="#accueil">Accueil</a>
-<a href="#histoire">Son histoire</a>
-<a href="#vision">Sa vision</a>
-<a href="#valeurs">Ses valeurs</a>
-<a href="#musique">Musique</a>
+    <a href="#accueil">Accueil</a>
+
+    <a href="#histoire">Son histoire</a>
+
+    <a href="#vision">Sa vision</a>
+
+    <a href="#valeurs">Ses valeurs</a>
+
+    <a href="#musique">Musique</a>
 
 </nav>
 
 
-
-<section id="accueil">
-
-<div class="card">
-
-<h2>Bienvenue sur Tedavision</h2>
-
-<p>
-Tedavision est le symbole d'une femme exceptionnelle,
-une femme qui avance avec courage, dignité et détermination.
-</p>
-
-<p>
-Son parcours inspire par sa force intérieure,
-sa patience et sa capacité à continuer malgré les défis de la vie.
-</p>
+<main class="container">
 
 
-<div class="photo">
-    <img src="ternezan-tedaisha.jpg" alt="Ternezan Tedaisha Namara">
-</div>
+<!-- ===== ACCUEIL ===== -->
+
+<section id="accueil" class="hero">
+
+    <h2>Bienvenue sur Tedavision</h2>
+
+    <p>
+        Découvrez l'univers de <strong>Ternezan Tedaisha Namara</strong>,
+        une femme dont le parcours est marqué par la force,
+        le courage et la persévérance.
+    </p>
+
+    <p>
+        Derrière chaque épreuve se trouve une leçon,
+        derrière chaque difficulté se trouve une force,
+        et derrière chaque rêve se trouve une volonté d'avancer.
+    </p>
 
 
-</div>
+    <!-- PHOTO -->
 
-</section>
+    <div class="photo-box">
+
+        <img
+        src="ternezan-tedaisha.jpg"
+        alt="Ternezan Tedaisha Namara">
+
+    </div>
 
 
+    <div class="buttons">
 
-<section id="histoire">
+        <a class="btn" href="#histoire">
+            Découvrir son histoire
+        </a>
 
-<div class="card">
+        <a class="btn" href="#vision">
+            Découvrir sa vision
+        </a>
 
-<h2>Son histoire</h2>
-
-<p>
-L'histoire de Tedavision est celle d'une femme qui a transformé
-les difficultés en force et les obstacles en motivation.
-</p>
-
-<p>
-Chaque expérience a construit son caractère et a renforcé sa volonté
-de réussir et d'aller toujours plus loin.
-</p>
-
-</div>
+    </div>
 
 </section>
 
 
+<!-- ===== HISTOIRE ===== -->
+
+<section id="histoire" class="section">
+
+    <h2>Son histoire</h2>
+
+    <p>
+        L'histoire de Ternezan Tedaisha Namara est celle
+        d'une femme qui avance avec courage et détermination.
+    </p>
+
+    <p>
+        Les difficultés de la vie peuvent parfois mettre
+        la force d'une personne à l'épreuve. Mais certaines
+        personnes choisissent de continuer à avancer,
+        de croire en elles-mêmes et de transformer
+        chaque expérience en une nouvelle force.
+    </p>
+
+    <p>
+        Son parcours représente la résilience, la patience,
+        la dignité et la volonté de ne jamais abandonner
+        ses rêves.
+    </p>
+
+</section>
 
 
-<section id="vision">
+<!-- ===== VISION ===== -->
 
-<div class="card">
+<section id="vision" class="section">
 
-<h2>Sa vision</h2>
+    <h2>Sa vision</h2>
 
-<p>
-Tedavision porte un message d'espoir, de courage et de confiance en soi.
-</p>
+    <p>
+        La vision de Tedavision est de transmettre un message
+        positif, rempli d'espoir, de courage et de confiance.
+    </p>
 
-<p>
-Sa vision est d'inspirer les autres et de montrer que la détermination
-peut permettre de réaliser de grandes choses.
-</p>
+    <p>
+        Chaque personne possède une lumière intérieure.
+        Même lorsque le chemin devient difficile,
+        il est toujours possible de continuer à avancer,
+        d'apprendre et de construire un avenir meilleur.
+    </p>
 
-</div>
+    <p>
+        Tedavision veut être un espace où la force,
+        la beauté intérieure et la détermination
+        sont mises en valeur.
+    </p>
 
 </section>
 
 
+<!-- ===== VALEURS ===== -->
 
+<section id="valeurs" class="section">
 
-<section id="valeurs">
+    <h2>Ses valeurs</h2>
 
-<div class="card">
+    <p style="text-align:center;">
+        Des valeurs qui représentent l'esprit de Tedavision.
+    </p>
 
-<h2>Ses valeurs</h2>
+    <div class="values">
 
-<div class="values">
+        <div class="value">Courage</div>
 
-<div class="value">Courage</div>
-<div class="value">Résilience</div>
-<div class="value">Force</div>
-<div class="value">Espoir</div>
-<div class="value">Détermination</div>
+        <div class="value">Résilience</div>
 
-</div>
+        <div class="value">Dignité</div>
 
-</div>
+        <div class="value">Force</div>
+
+        <div class="value">Espoir</div>
+
+        <div class="value">Détermination</div>
+
+        <div class="value">Persévérance</div>
+
+    </div>
 
 </section>
-<section id="musique">
-
-<div class="card">
-
-<h2>🎵 Écouter la musique</h2>
-
-<p>
-Un moment musical dans l'univers de Tedavision.
-</p>
-
-<audio controls>
-    <source src="musique-tedavision.mp3" type="audio/mpeg">
-    Votre navigateur ne supporte pas la lecture audio.
-</audio>
-
-</div>
-
-  </section>
 
 
+<!-- ===== MESSAGE ===== -->
 
+<section class="section">
+
+    <h2>Un message de courage</h2>
+
+    <p style="text-align:center; font-size:19px;">
+
+        « La véritable force ne consiste pas à ne jamais
+        rencontrer de difficultés, mais à trouver le courage
+        de continuer son chemin avec dignité et espoir. »
+
+    </p>
+
+</section>
+
+
+<!-- ===== MUSIQUE ===== -->
+
+<section id="musique" class="section music-box">
+
+    <h2>🎵 Écouter la musique</h2>
+
+    <p>
+        Découvrez la musique qui accompagne l'univers
+        de Tedavision.
+    </p>
+
+    <audio controls>
+
+        <source
+        src="musique-tedavision.mp3"
+        type="audio/mpeg">
+
+        Votre navigateur ne supporte pas la lecture audio.
+
+    </audio>
+
+</section>
+
+
+</main>
+
+
+<!-- ===== PIED DE PAGE ===== -->
 
 <footer>
 
-<footer>
+    <p>
+        <strong>Tedavision</strong>
+    </p>
 
-<p>
-© 2026 Tedavision - Créé avec inspiration par Ternezan Tedaisha Namara
-</p>
+    <p>
+        Ternezan Tedaisha Namara
+    </p>
+
+    <p>
+        © 2026 Tedavision — Tous droits réservés
+    </p>
 
 </footer>
 
 
 </body>
-</html>
-
-
-<footer>
-<p>© 2026 Tedavision - Tous droits réservés</p>
-</footer>
-
-
-</body>
-  </html>
-<p>Bienvenue sur le site officiel de TedaVision.</p>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>TedaVision</title>
-</head>
-<body style="background:black;color:white;text-align:center;font-family:Arial;padding-top:100px;">
-  <h1>Bienvenue sur TedaVision</h1>
-  <p>Mon site fonctionne avec succès !</p>
-</body>
-</html>
+    </html>
