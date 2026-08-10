@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,430 +24,757 @@ body{
     background:#f4f1ec;
     color:#222;
     overflow-x:hidden;
+    transition:.4s;
 }
 
-/* ===== ANIMATION ===== */
+/* ===== MODE SOMBRE ===== */
 
-@keyframes fadeIn{
+body.dark{
+    background:#101010;
+    color:#eee;
+}
+
+body.dark .hero,
+body.dark .section{
+    background:#1d1d1d;
+    color:#eee;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeUp{
+
     from{
         opacity:0;
-        transform:translateY(25px);
+        transform:translateY(30px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 @keyframes glow{
+
     0%,100%{
         text-shadow:0 0 5px rgba(212,175,55,.2);
     }
+
     50%{
         text-shadow:0 0 25px rgba(212,175,55,.7);
     }
-}
 
-@keyframes pulse{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.04);
-    }
 }
 
 /* ===== HEADER ===== */
 
 header{
+
     min-height:520px;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
     text-align:center;
+
     padding:50px 20px;
+
     background:
-        linear-gradient(135deg,
-        rgba(0,0,0,.95),
-        rgba(35,35,35,.88),
-        rgba(139,107,50,.92));
+    linear-gradient(
+        135deg,
+        #111 0%,
+        #292929 55%,
+        #8b6b32 100%
+    );
+
     color:white;
+
     position:relative;
+
     overflow:hidden;
+
 }
 
-header::before{
-    content:"";
-    position:absolute;
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    background:rgba(212,175,55,.08);
-    top:-120px;
-    left:-120px;
+/* ===== LOGO ===== */
+
+.logo-image{
+
+    width:120px;
+    height:120px;
+
+    object-fit:contain;
+
+    margin-bottom:20px;
+
+    border-radius:25px;
+
 }
 
-header::after{
-    content:"";
-    position:absolute;
-    width:300px;
-    height:300px;
-    border-radius:50%;
-    background:rgba(139,0,0,.12);
-    bottom:-130px;
-    right:-100px;
-}
+/*
+Si logo-tedavision.png n'existe pas encore,
+le texte TEDAVISION restera visible.
+*/
 
 .logo{
+
     font-size:58px;
     font-weight:bold;
+
     letter-spacing:7px;
-    margin-bottom:12px;
+
     animation:glow 3s infinite;
-    position:relative;
-    z-index:2;
-}
 
-.name{
-    font-size:23px;
-    letter-spacing:3px;
-    margin-bottom:18px;
-    position:relative;
-    z-index:2;
-}
-
-.subtitle{
-    max-width:720px;
-    font-size:19px;
-    line-height:1.8;
-    color:#e8e8e8;
-    position:relative;
-    z-index:2;
 }
 
 .line{
+
     width:100px;
     height:3px;
+
     background:#d4af37;
+
     margin:22px auto;
-    position:relative;
-    z-index:2;
+
+}
+
+.name{
+
+    font-size:23px;
+
+    letter-spacing:3px;
+
+    margin-bottom:18px;
+
+}
+
+.subtitle{
+
+    max-width:720px;
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    color:#e8e8e8;
+
+}
+
+/* ===== LANGUAGE / MODE ===== */
+
+.top-tools{
+
+    position:fixed;
+
+    top:15px;
+    right:15px;
+
+    z-index:2000;
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+.tool-btn{
+
+    border:none;
+
+    padding:10px 13px;
+
+    border-radius:20px;
+
+    background:#d4af37;
+
+    color:#111;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
 }
 
 /* ===== NAVIGATION ===== */
 
 nav{
+
     position:sticky;
+
     top:0;
+
     z-index:1000;
-    background:rgba(17,17,17,.96);
-    padding:14px 10px;
+
+    background:rgba(17,17,17,.97);
+
+    padding:13px 8px;
+
     text-align:center;
-    box-shadow:0 3px 18px rgba(0,0,0,.25);
-    backdrop-filter:blur(8px);
+
+    box-shadow:0 3px 18px rgba(0,0,0,.3);
+
 }
 
 nav a{
+
     display:inline-block;
+
     color:white;
+
     text-decoration:none;
-    margin:5px 8px;
-    padding:10px 15px;
-    border-radius:25px;
-    font-size:14px;
+
+    margin:4px;
+
+    padding:9px 13px;
+
+    border-radius:22px;
+
+    font-size:13px;
+
     transition:.3s;
+
 }
 
 nav a:hover{
+
     background:#d4af37;
+
     color:#111;
-    transform:translateY(-2px);
+
 }
 
 /* ===== CONTAINER ===== */
 
 .container{
+
     max-width:1100px;
+
     margin:auto;
+
     padding:50px 20px;
+
 }
 
-/* ===== ACCUEIL ===== */
+/* ===== CARDS ===== */
+
+.hero,
+.section{
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:38px 30px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
+
+    animation:fadeUp .8s ease;
+
+}
 
 .hero{
-    background:white;
-    border-radius:28px;
-    padding:40px 30px;
-    box-shadow:0 10px 35px rgba(0,0,0,.12);
+
     text-align:center;
-    animation:fadeIn .8s ease;
+
+}
+
+.hero h2,
+.section h2{
+
+    color:#8b0000;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+body.dark .hero h2,
+body.dark .section h2{
+
+    color:#d4af37;
+
 }
 
 .hero h2{
-    color:#8b0000;
+
     font-size:34px;
-    margin-bottom:18px;
+
 }
 
-.hero p{
-    line-height:1.8;
-    max-width:750px;
-    margin:10px auto;
+.hero p,
+.section p{
+
+    line-height:1.9;
+
     font-size:17px;
+
+    margin:12px auto;
+
+    max-width:800px;
+
 }
 
 /* ===== PHOTO ===== */
 
 .photo-box{
-    width:100%;
-    max-width:520px;
-    margin:30px auto;
-    border-radius:25px;
-    overflow:hidden;
-    box-shadow:0 12px 35px rgba(0,0,0,.25);
-    background:#ddd;
-    border:5px solid white;
-    transition:.4s;
-}
 
-.photo-box:hover{
-    transform:scale(1.02);
-    box-shadow:0 15px 40px rgba(0,0,0,.32);
+    width:100%;
+
+    max-width:520px;
+
+    margin:30px auto;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
+
+    border:5px solid white;
+
 }
 
 .photo-box img{
+
     width:100%;
+
     display:block;
-    height:auto;
-}
 
-/* ===== GALERIE ===== */
-
-.gallery{
-    margin-top:35px;
-}
-
-.gallery h3{
-    color:#8b0000;
-    font-size:25px;
-    margin-bottom:20px;
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.gallery-card{
-    background:#fff;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,.12);
-    transition:.4s;
-}
-
-.gallery-card:hover{
-    transform:translateY(-6px);
-}
-
-.gallery-card img{
-    width:100%;
-    display:block;
-}
-
-.gallery-card p{
-    padding:15px;
-    text-align:center;
-    font-weight:bold;
-    color:#8b0000;
 }
 
 /* ===== BOUTONS ===== */
 
 .buttons{
+
     display:flex;
+
     flex-wrap:wrap;
+
     justify-content:center;
+
     gap:15px;
+
     margin-top:30px;
+
 }
 
 .btn{
+
     display:inline-block;
+
     padding:14px 24px;
+
     background:#8b0000;
+
     color:white;
+
     text-decoration:none;
+
     border-radius:30px;
+
     font-weight:bold;
+
     transition:.3s;
-    box-shadow:0 5px 15px rgba(139,0,0,.2);
+
+    border:none;
+
+    cursor:pointer;
+
 }
 
 .btn:hover{
+
     background:#d4af37;
+
     color:#111;
+
     transform:translateY(-3px);
+
 }
 
-/* ===== SECTIONS ===== */
+/* ===== À PROPOS ===== */
 
-.section{
-    margin-top:35px;
-    background:white;
-    border-radius:25px;
-    padding:38px 30px;
-    box-shadow:0 8px 30px rgba(0,0,0,.10);
-    animation:fadeIn .8s ease;
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:25px;
+
 }
 
-.section h2{
-    color:#8b0000;
+.about-card{
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:#f4f1ec;
+
     text-align:center;
-    font-size:30px;
-    margin-bottom:22px;
+
 }
 
-.section p{
-    line-height:1.9;
-    font-size:17px;
-    margin:12px 0;
+body.dark .about-card{
+
+    background:#292929;
+
+}
+
+.about-card h3{
+
+    color:#8b0000;
+
+    margin-bottom:12px;
+
+}
+
+body.dark .about-card h3{
+
+    color:#d4af37;
+
+}
+
+/* ===== VALEURS ===== */
+
+.values{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+.value{
+
+    padding:14px 22px;
+
+    border-radius:30px;
+
+    background:#d4af37;
+
+    color:#111;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.value:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ===== GALERIE ===== */
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:25px;
+
+}
+
+.gallery-card{
+
+    background:#eee;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    transition:.4s;
+
+}
+
+body.dark .gallery-card{
+
+    background:#292929;
+
+}
+
+.gallery-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.gallery-card img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+.gallery-card p{
+
+    text-align:center;
+
+    padding:15px;
+
+    font-weight:bold;
+
+}
+
+/* ===== MOMENTS ===== */
+
+.moments{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:25px;
+
+}
+
+.moment{
+
+    border-left:4px solid #d4af37;
+
+    padding:20px;
+
+    background:#f7f7f7;
+
+    border-radius:15px;
+
+}
+
+body.dark .moment{
+
+    background:#292929;
+
+}
+
+.moment h3{
+
+    color:#8b0000;
+
+    margin-bottom:10px;
+
+}
+
+body.dark .moment h3{
+
+    color:#d4af37;
+
 }
 
 /* ===== MESSAGE ===== */
 
-.message{
-    background:linear-gradient(135deg,#111,#292929);
-    color:white;
-    text-align:center;
+.message-form{
+
+    max-width:700px;
+
+    margin:25px auto;
+
 }
 
-.message h2{
-    color:#d4af37;
+.message-form input,
+.message-form textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    margin:8px 0;
+
+    border:1px solid #ccc;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-family:Arial;
+
 }
 
-.message p{
-    max-width:800px;
-    margin:15px auto;
-    font-size:20px;
-    line-height:1.8;
+.message-form textarea{
+
+    min-height:140px;
+
+    resize:vertical;
+
 }
 
-/* ===== VALUES ===== */
-
-.values{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-    margin-top:25px;
-}
-
-.value{
-    padding:14px 22px;
-    border-radius:30px;
-    background:#d4af37;
-    color:#111;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.value:hover{
-    transform:translateY(-4px);
-    box-shadow:0 8px 15px rgba(0,0,0,.15);
-}
-
-/* ===== MUSIC ===== */
+/* ===== MUSIQUE ===== */
 
 .music-box{
+
     text-align:center;
-    background:linear-gradient(135deg,#111,#292929);
-    color:white;
-    border-radius:25px;
-    padding:40px 20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #111,
+        #292929
+    ) !important;
+
+    color:white !important;
+
 }
 
 .music-box h2{
-    color:#d4af37;
-}
 
-.music-box p{
-    margin-bottom:25px;
-    line-height:1.7;
+    color:#d4af37 !important;
+
 }
 
 .music-player{
+
     max-width:650px;
-    margin:25px auto 0;
+
+    margin:25px auto;
+
     padding:20px;
+
     background:rgba(255,255,255,.08);
+
     border-radius:20px;
+
 }
 
 audio{
+
     width:100%;
-    max-width:600px;
+
 }
 
 /* ===== CONTACT ===== */
 
 .contact-box{
+
     text-align:center;
+
 }
 
 .contact-number{
-    font-size:25px;
-    font-weight:bold;
+
     color:#8b0000;
-    margin:20px 0;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    margin:20px;
+
+}
+
+body.dark .contact-number{
+
+    color:#d4af37;
+
+}
+
+/* ===== MESSAGE COURAGE ===== */
+
+.message{
+
+    background:
+    linear-gradient(
+        135deg,
+        #111,
+        #292929
+    ) !important;
+
+    color:white !important;
+
+    text-align:center;
+
+}
+
+.message h2{
+
+    color:#d4af37 !important;
+
+}
+
+/* ===== RETOUR HAUT ===== */
+
+.top-button{
+
+    position:fixed;
+
+    bottom:20px;
+    right:20px;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    background:#8b0000;
+
+    color:white;
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    z-index:999;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+
 }
 
 /* ===== FOOTER ===== */
 
 footer{
+
     background:#111;
+
     color:white;
+
     text-align:center;
+
     padding:35px 20px;
-    margin-top:50px;
+
 }
 
 footer strong{
+
     color:#d4af37;
+
     font-size:22px;
+
 }
 
 footer p{
-    margin:8px 0;
-}
 
-/* ===== BOUTON RETOUR ===== */
+    margin:8px;
 
-.top-button{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:#8b0000;
-    color:white;
-    text-decoration:none;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
-    box-shadow:0 5px 20px rgba(0,0,0,.3);
-    z-index:999;
-    transition:.3s;
-}
-
-.top-button:hover{
-    background:#d4af37;
-    color:#111;
-    transform:translateY(-4px);
 }
 
 /* ===== MOBILE ===== */
@@ -454,79 +782,138 @@ footer p{
 @media(max-width:600px){
 
     header{
-        min-height:470px;
+
+        min-height:500px;
+
         padding:40px 18px;
+
     }
 
     .logo{
-        font-size:39px;
+
+        font-size:40px;
+
         letter-spacing:4px;
+
+    }
+
+    .logo-image{
+
+        width:95px;
+        height:95px;
+
     }
 
     .name{
+
         font-size:18px;
-        letter-spacing:2px;
+
     }
 
     .subtitle{
+
         font-size:16px;
+
     }
 
     .hero,
     .section{
+
         padding:28px 18px;
+
     }
 
     .hero h2,
     .section h2{
-        font-size:26px;
-    }
 
-    nav{
-        padding:10px 5px;
+        font-size:27px;
+
     }
 
     nav a{
-        margin:3px;
-        padding:8px 10px;
+
+        padding:8px 9px;
+
         font-size:12px;
+
     }
 
     .btn{
+
         width:100%;
+
         max-width:300px;
-    }
 
-    .message p{
-        font-size:17px;
-    }
-
-    .contact-number{
-        font-size:21px;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body id="top">
 
-<!-- ===== EN-TÊTE ===== -->
+
+<!-- ===== OUTILS ===== -->
+
+<div class="top-tools">
+
+    <button
+    class="tool-btn"
+    onclick="toggleMode()">
+
+        🌙
+
+    </button>
+
+    <button
+    class="tool-btn"
+    onclick="toggleLanguage()">
+
+        FR / KREYÒL
+
+    </button>
+
+</div>
+
+
+<!-- ===== HEADER ===== -->
 
 <header>
 
-    <div class="logo">TEDAVISION</div>
+    <!-- LOGO -->
+
+    <img
+    class="logo-image"
+    src="logo-tedavision.png"
+    alt="Logo Tedavision"
+    onerror="this.style.display='none';">
+
+
+    <div class="logo">
+
+        TEDAVISION
+
+    </div>
+
 
     <div class="line"></div>
 
+
     <div class="name">
+
         Ternezan Tedaisha Namara
+
     </div>
 
+
     <div class="subtitle">
+
         Une histoire de courage, de résilience,
         de dignité et de détermination.
+
     </div>
 
 </header>
@@ -538,6 +925,8 @@ footer p{
 
     <a href="#accueil">Accueil</a>
 
+    <a href="#apropos">À propos</a>
+
     <a href="#histoire">Son histoire</a>
 
     <a href="#vision">Sa vision</a>
@@ -546,7 +935,11 @@ footer p{
 
     <a href="#galerie">Galerie</a>
 
+    <a href="#moments">Moments</a>
+
     <a href="#musique">Musique</a>
+
+    <a href="#messages">Messages</a>
 
     <a href="#contact">Contact</a>
 
@@ -560,18 +953,32 @@ footer p{
 
 <section id="accueil" class="hero">
 
-    <h2>Bienvenue sur Tedavision</h2>
+    <h2>
+
+        Bienvenue sur Tedavision
+
+    </h2>
+
 
     <p>
-        Découvrez l'univers de <strong>Ternezan Tedaisha Namara</strong>,
-        une femme dont le parcours est marqué par la force,
-        le courage et la persévérance.
+
+        Découvrez l'univers de
+        <strong>
+            Ternezan Tedaisha Namara
+        </strong>,
+
+        une femme dont le parcours est marqué
+        par la force, le courage et la persévérance.
+
     </p>
 
+
     <p>
+
         Derrière chaque épreuve se trouve une leçon,
         derrière chaque difficulté se trouve une force,
         et derrière chaque rêve se trouve une volonté d'avancer.
+
     </p>
 
 
@@ -588,16 +995,30 @@ footer p{
 
     <div class="buttons">
 
-        <a class="btn" href="#histoire">
+        <a
+        class="btn"
+        href="#histoire">
+
             Découvrir son histoire
+
         </a>
 
-        <a class="btn" href="#vision">
+
+        <a
+        class="btn"
+        href="#vision">
+
             Découvrir sa vision
+
         </a>
 
-        <a class="btn" href="tel:+50934850736">
+
+        <a
+        class="btn"
+        href="tel:+50934850736">
+
             📞 Contacter
+
         </a>
 
     </div>
@@ -605,27 +1026,72 @@ footer p{
 </section>
 
 
-<!-- ===== GALERIE ===== -->
+<!-- ===== À PROPOS ===== -->
 
-<section id="galerie" class="section gallery">
+<section
+id="apropos"
+class="section">
 
-    <h2>📸 Galerie</h2>
+    <h2>
+
+        ⭐ À propos de Tedavision
+
+    </h2>
+
 
     <p style="text-align:center;">
-        Quelques images qui représentent l'univers de Tedavision.
+
+        Tedavision est un espace consacré à
+        l'histoire, à la force et aux valeurs
+        de Ternezan Tedaisha Namara.
+
     </p>
 
-    <div class="gallery-grid">
 
-        <div class="gallery-card">
+    <div class="about-grid">
 
-            <img
-            src="photo.jpg"
-            alt="Ternezan Tedaisha Namara">
 
-            <p>Ternezan Tedaisha Namara</p>
+        <div class="about-card">
+
+            <h3>Notre objectif</h3>
+
+            <p>
+
+                Partager un message positif,
+                inspirant et rempli d'espoir.
+
+            </p>
 
         </div>
+
+
+        <div class="about-card">
+
+            <h3>Notre vision</h3>
+
+            <p>
+
+                Mettre en valeur la détermination,
+                la dignité et la persévérance.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>Notre message</h3>
+
+            <p>
+
+                Chaque difficulté peut devenir
+                une nouvelle source de force.
+
+            </p>
+
+        </div>
+
 
     </div>
 
@@ -634,27 +1100,42 @@ footer p{
 
 <!-- ===== HISTOIRE ===== -->
 
-<section id="histoire" class="section">
+<section
+id="histoire"
+class="section">
 
-    <h2>Son histoire</h2>
+    <h2>
+
+        Son histoire
+
+    </h2>
+
 
     <p>
-        L'histoire de Ternezan Tedaisha Namara est celle
-        d'une femme qui avance avec courage et détermination.
+
+        L'histoire de Ternezan Tedaisha Namara
+        est celle d'une femme qui avance
+        avec courage et détermination.
+
     </p>
 
-    <p>
-        Les difficultés de la vie peuvent parfois mettre
-        la force d'une personne à l'épreuve. Mais certaines
-        personnes choisissent de continuer à avancer,
-        de croire en elles-mêmes et de transformer
-        chaque expérience en une nouvelle force.
-    </p>
 
     <p>
-        Son parcours représente la résilience, la patience,
-        la dignité et la volonté de ne jamais abandonner
-        ses rêves.
+
+        Les difficultés de la vie peuvent parfois
+        mettre la force d'une personne à l'épreuve.
+        Mais certaines personnes choisissent
+        de continuer à avancer.
+
+    </p>
+
+
+    <p>
+
+        Son parcours représente la résilience,
+        la patience, la dignité et la volonté
+        de ne jamais abandonner ses rêves.
+
     </p>
 
 </section>
@@ -662,26 +1143,42 @@ footer p{
 
 <!-- ===== VISION ===== -->
 
-<section id="vision" class="section">
+<section
+id="vision"
+class="section">
 
-    <h2>Sa vision</h2>
+    <h2>
+
+        Sa vision
+
+    </h2>
+
 
     <p>
-        La vision de Tedavision est de transmettre un message
-        positif, rempli d'espoir, de courage et de confiance.
+
+        La vision de Tedavision est de transmettre
+        un message positif, rempli d'espoir,
+        de courage et de confiance.
+
     </p>
 
-    <p>
-        Chaque personne possède une lumière intérieure.
-        Même lorsque le chemin devient difficile,
-        il est toujours possible de continuer à avancer,
-        d'apprendre et de construire un avenir meilleur.
-    </p>
 
     <p>
+
+        Chaque personne possède une lumière
+        intérieure. Même lorsque le chemin devient
+        difficile, il est toujours possible
+        de continuer à avancer.
+
+    </p>
+
+
+    <p>
+
         Tedavision veut être un espace où la force,
         la beauté intérieure et la détermination
         sont mises en valeur.
+
     </p>
 
 </section>
@@ -689,45 +1186,196 @@ footer p{
 
 <!-- ===== VALEURS ===== -->
 
-<section id="valeurs" class="section">
+<section
+id="valeurs"
+class="section">
 
-    <h2>Ses valeurs</h2>
+    <h2>
+
+        Ses valeurs
+
+    </h2>
+
 
     <p style="text-align:center;">
-        Des valeurs qui représentent l'esprit de Tedavision.
+
+        Des valeurs qui représentent
+        l'esprit de Tedavision.
+
     </p>
+
 
     <div class="values">
 
-        <div class="value">Courage</div>
+        <div class="value">
+            Courage
+        </div>
 
-        <div class="value">Résilience</div>
+        <div class="value">
+            Résilience
+        </div>
 
-        <div class="value">Dignité</div>
+        <div class="value">
+            Dignité
+        </div>
 
-        <div class="value">Force</div>
+        <div class="value">
+            Force
+        </div>
 
-        <div class="value">Espoir</div>
+        <div class="value">
+            Espoir
+        </div>
 
-        <div class="value">Détermination</div>
+        <div class="value">
+            Détermination
+        </div>
 
-        <div class="value">Persévérance</div>
+        <div class="value">
+            Persévérance
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- ===== MESSAGE ===== -->
+<!-- ===== GALERIE ===== -->
+
+<section
+id="galerie"
+class="section">
+
+    <h2>
+
+        📸 Galerie
+
+    </h2>
+
+
+    <p style="text-align:center;">
+
+        Les images de l'univers Tedavision.
+
+    </p>
+
+
+    <div class="gallery-grid">
+
+
+        <div class="gallery-card">
+
+            <img
+            src="photo.jpg"
+            alt="Ternezan Tedaisha Namara">
+
+            <p>
+
+                Ternezan Tedaisha Namara
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===== MOMENTS ===== -->
+
+<section
+id="moments"
+class="section">
+
+    <h2>
+
+        📅 Moments
+
+    </h2>
+
+
+    <div class="moments">
+
+
+        <div class="moment">
+
+            <h3>
+
+                Un parcours
+
+            </h3>
+
+            <p>
+
+                Chaque étape de la vie peut
+                devenir une nouvelle expérience.
+
+            </p>
+
+        </div>
+
+
+        <div class="moment">
+
+            <h3>
+
+                Une force
+
+            </h3>
+
+            <p>
+
+                La persévérance permet de continuer
+                même lorsque le chemin est difficile.
+
+            </p>
+
+        </div>
+
+
+        <div class="moment">
+
+            <h3>
+
+                Un avenir
+
+            </h3>
+
+            <p>
+
+                Chaque nouveau jour représente
+                une nouvelle possibilité.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ===== MESSAGE COURAGE ===== -->
 
 <section class="section message">
 
-    <h2>❤️ Un message de courage</h2>
+    <h2>
+
+        ❤️ Un message de courage
+
+    </h2>
+
 
     <p>
-        « La véritable force ne consiste pas à ne jamais
-        rencontrer de difficultés, mais à trouver le courage
-        de continuer son chemin avec dignité et espoir. »
+
+        « La véritable force ne consiste pas
+        à ne jamais rencontrer de difficultés,
+        mais à trouver le courage de continuer
+        son chemin avec dignité et espoir. »
+
     </p>
 
 </section>
@@ -735,16 +1383,34 @@ footer p{
 
 <!-- ===== MUSIQUE ===== -->
 
-<section id="musique" class="section music-box">
+<section
+id="musique"
+class="section music-box">
 
-    <h2>🎵 Écouter la musique</h2>
+    <h2>
+
+        🎵 Écouter la musique
+
+    </h2>
+
 
     <p>
-        Découvrez la musique qui accompagne l'univers
-        de Tedavision.
+
+        Découvrez la musique qui accompagne
+        l'univers de Tedavision.
+
     </p>
 
+
     <div class="music-player">
+
+        <p>
+
+            🎶 Teddy Hashtag —
+            M vle w konnen
+
+        </p>
+
 
         <audio controls>
 
@@ -752,7 +1418,9 @@ footer p{
             src="Teddy_Hashtag_-_M_vle_w_Konnen(256k).mp3"
             type="audio/mpeg">
 
-            Votre navigateur ne supporte pas la lecture audio.
+
+            Votre navigateur ne supporte
+            pas la lecture audio.
 
         </audio>
 
@@ -761,25 +1429,117 @@ footer p{
 </section>
 
 
-<!-- ===== CONTACT ===== -->
+<!-- ===== MESSAGES ===== -->
 
-<section id="contact" class="section contact-box">
+<section
+id="messages"
+class="section">
 
-    <h2>📞 Contact</h2>
+    <h2>
 
-    <p>
-        Pour contacter Tedavision, utilisez le bouton
-        ci-dessous.
+        💌 Laisser un beau message
+
+    </h2>
+
+
+    <p style="text-align:center;">
+
+        Vous pouvez laisser quelques mots
+        positifs pour Ternezan.
+
     </p>
 
-    <div class="contact-number">
-        +509 3485-0736
+
+    <!--
+    FORMULAIRE PRÊT POUR FORMSPREE
+
+    Nous ajouterons l'adresse Formspree
+    lorsque nous terminerons cette partie.
+    -->
+
+
+    <div class="message-form">
+
+
+        <input
+        type="text"
+        name="name"
+        placeholder="Votre nom">
+
+
+        <input
+        type="email"
+        name="email"
+        placeholder="Votre adresse e-mail">
+
+
+        <textarea
+        name="message"
+        placeholder="Écrivez votre beau message ici..."></textarea>
+
+
+        <div class="buttons">
+
+            <button
+            class="btn"
+            type="button"
+            onclick="messageSoon()">
+
+                💌 Envoyer le message
+
+            </button>
+
+        </div>
+
+
+        <p style="text-align:center;font-size:14px;opacity:.7;">
+
+            Le système privé d'envoi sera connecté
+            avec Formspree.
+
+        </p>
+
     </div>
+
+</section>
+
+
+<!-- ===== CONTACT ===== -->
+
+<section
+id="contact"
+class="section contact-box">
+
+    <h2>
+
+        📞 Contact
+
+    </h2>
+
+
+    <p>
+
+        Pour contacter Tedavision,
+        utilisez le bouton ci-dessous.
+
+    </p>
+
+
+    <div class="contact-number">
+
+        +509 3485-0736
+
+    </div>
+
 
     <div class="buttons">
 
-        <a class="btn" href="tel:+50934850736">
+        <a
+        class="btn"
+        href="tel:+50934850736">
+
             📞 Appeler maintenant
+
         </a>
 
     </div>
@@ -792,32 +1552,103 @@ footer p{
 
 <!-- ===== RETOUR EN HAUT ===== -->
 
-<a class="top-button" href="#top" title="Retour en haut">
+<a
+class="top-button"
+href="#top">
+
     ↑
+
 </a>
 
 
-<!-- ===== PIED DE PAGE ===== -->
+<!-- ===== FOOTER ===== -->
 
 <footer>
 
     <p>
-        <strong>Tedavision</strong>
+
+        <strong>
+            Tedavision
+        </strong>
+
     </p>
 
+
     <p>
+
         Ternezan Tedaisha Namara
+
     </p>
 
-    <p>
-        Une histoire de courage, de force et de détermination.
-    </p>
 
     <p>
-        © 2026 Tedavision — Tous droits réservés
+
+        Une histoire de courage,
+        de force et de détermination.
+
+    </p>
+
+
+    <p>
+
+        © 2026 Tedavision —
+        Tous droits réservés
+
     </p>
 
 </footer>
+
+
+<script>
+
+/* ===== MODE SOMBRE / CLAIR ===== */
+
+function toggleMode(){
+
+    document.body.classList.toggle("dark");
+
+}
+
+
+/* ===== MESSAGE ===== */
+
+function messageSoon(){
+
+    alert(
+        "Merci pour votre message ❤️\n\n" +
+        "La connexion privée sera activée prochainement."
+    );
+
+}
+
+
+/* ===== LANGUE ===== */
+
+let creole = false;
+
+
+function toggleLanguage(){
+
+    creole = !creole;
+
+
+    if(creole){
+
+        alert(
+            "Kreyòl ap disponib nèt nan pwochen etap la."
+        );
+
+    }else{
+
+        alert(
+            "Français sélectionné."
+        );
+
+    }
+
+}
+
+</script>
 
 
 </body>
