@@ -22,47 +22,116 @@ body{
     font-family:Arial, Helvetica, sans-serif;
     background:#f4f1ec;
     color:#222;
+    overflow-x:hidden;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes glow{
+    0%,100%{
+        text-shadow:0 0 5px rgba(212,175,55,.2);
+    }
+    50%{
+        text-shadow:0 0 25px rgba(212,175,55,.7);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.04);
+    }
 }
 
 /* ===== HEADER ===== */
 
 header{
-    min-height:430px;
+    min-height:520px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:40px 20px;
-    background:linear-gradient(135deg,#111 0%,#292929 55%,#8b6b32 100%);
+    padding:50px 20px;
+    background:
+        linear-gradient(135deg,
+        rgba(0,0,0,.95),
+        rgba(35,35,35,.88),
+        rgba(139,107,50,.92));
     color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+header::before{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:rgba(212,175,55,.08);
+    top:-120px;
+    left:-120px;
+}
+
+header::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(139,0,0,.12);
+    bottom:-130px;
+    right:-100px;
 }
 
 .logo{
-    font-size:54px;
+    font-size:58px;
     font-weight:bold;
-    letter-spacing:5px;
+    letter-spacing:7px;
     margin-bottom:12px;
+    animation:glow 3s infinite;
+    position:relative;
+    z-index:2;
 }
 
 .name{
-    font-size:22px;
-    letter-spacing:2px;
+    font-size:23px;
+    letter-spacing:3px;
     margin-bottom:18px;
+    position:relative;
+    z-index:2;
 }
 
 .subtitle{
-    max-width:700px;
+    max-width:720px;
     font-size:19px;
-    line-height:1.7;
+    line-height:1.8;
     color:#e8e8e8;
+    position:relative;
+    z-index:2;
 }
 
 .line{
-    width:90px;
+    width:100px;
     height:3px;
     background:#d4af37;
     margin:22px auto;
+    position:relative;
+    z-index:2;
 }
 
 /* ===== NAVIGATION ===== */
@@ -71,19 +140,20 @@ nav{
     position:sticky;
     top:0;
     z-index:1000;
-    background:#111;
+    background:rgba(17,17,17,.96);
     padding:14px 10px;
     text-align:center;
-    box-shadow:0 3px 15px rgba(0,0,0,.25);
+    box-shadow:0 3px 18px rgba(0,0,0,.25);
+    backdrop-filter:blur(8px);
 }
 
 nav a{
     display:inline-block;
     color:white;
     text-decoration:none;
-    margin:6px 10px;
-    padding:10px 14px;
-    border-radius:20px;
+    margin:5px 8px;
+    padding:10px 15px;
+    border-radius:25px;
     font-size:14px;
     transition:.3s;
 }
@@ -91,6 +161,7 @@ nav a{
 nav a:hover{
     background:#d4af37;
     color:#111;
+    transform:translateY(-2px);
 }
 
 /* ===== CONTAINER ===== */
@@ -98,22 +169,23 @@ nav a:hover{
 .container{
     max-width:1100px;
     margin:auto;
-    padding:45px 20px;
+    padding:50px 20px;
 }
 
 /* ===== ACCUEIL ===== */
 
 .hero{
     background:white;
-    border-radius:25px;
-    padding:35px;
-    box-shadow:0 8px 30px rgba(0,0,0,.12);
+    border-radius:28px;
+    padding:40px 30px;
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
     text-align:center;
+    animation:fadeIn .8s ease;
 }
 
 .hero h2{
     color:#8b0000;
-    font-size:32px;
+    font-size:34px;
     margin-bottom:18px;
 }
 
@@ -128,18 +200,67 @@ nav a:hover{
 
 .photo-box{
     width:100%;
-    max-width:500px;
+    max-width:520px;
     margin:30px auto;
-    border-radius:22px;
+    border-radius:25px;
     overflow:hidden;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
     background:#ddd;
+    border:5px solid white;
+    transition:.4s;
+}
+
+.photo-box:hover{
+    transform:scale(1.02);
+    box-shadow:0 15px 40px rgba(0,0,0,.32);
 }
 
 .photo-box img{
     width:100%;
     display:block;
     height:auto;
+}
+
+/* ===== GALERIE ===== */
+
+.gallery{
+    margin-top:35px;
+}
+
+.gallery h3{
+    color:#8b0000;
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.gallery-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    transition:.4s;
+}
+
+.gallery-card:hover{
+    transform:translateY(-6px);
+}
+
+.gallery-card img{
+    width:100%;
+    display:block;
+}
+
+.gallery-card p{
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+    color:#8b0000;
 }
 
 /* ===== BOUTONS ===== */
@@ -161,12 +282,13 @@ nav a:hover{
     border-radius:30px;
     font-weight:bold;
     transition:.3s;
+    box-shadow:0 5px 15px rgba(139,0,0,.2);
 }
 
 .btn:hover{
     background:#d4af37;
     color:#111;
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 }
 
 /* ===== SECTIONS ===== */
@@ -175,8 +297,9 @@ nav a:hover{
     margin-top:35px;
     background:white;
     border-radius:25px;
-    padding:35px;
+    padding:38px 30px;
     box-shadow:0 8px 30px rgba(0,0,0,.10);
+    animation:fadeIn .8s ease;
 }
 
 .section h2{
@@ -190,6 +313,25 @@ nav a:hover{
     line-height:1.9;
     font-size:17px;
     margin:12px 0;
+}
+
+/* ===== MESSAGE ===== */
+
+.message{
+    background:linear-gradient(135deg,#111,#292929);
+    color:white;
+    text-align:center;
+}
+
+.message h2{
+    color:#d4af37;
+}
+
+.message p{
+    max-width:800px;
+    margin:15px auto;
+    font-size:20px;
+    line-height:1.8;
 }
 
 /* ===== VALUES ===== */
@@ -208,6 +350,12 @@ nav a:hover{
     background:#d4af37;
     color:#111;
     font-weight:bold;
+    transition:.3s;
+}
+
+.value:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 15px rgba(0,0,0,.15);
 }
 
 /* ===== MUSIC ===== */
@@ -217,7 +365,7 @@ nav a:hover{
     background:linear-gradient(135deg,#111,#292929);
     color:white;
     border-radius:25px;
-    padding:35px 20px;
+    padding:40px 20px;
 }
 
 .music-box h2{
@@ -229,9 +377,30 @@ nav a:hover{
     line-height:1.7;
 }
 
+.music-player{
+    max-width:650px;
+    margin:25px auto 0;
+    padding:20px;
+    background:rgba(255,255,255,.08);
+    border-radius:20px;
+}
+
 audio{
     width:100%;
     max-width:600px;
+}
+
+/* ===== CONTACT ===== */
+
+.contact-box{
+    text-align:center;
+}
+
+.contact-number{
+    font-size:25px;
+    font-weight:bold;
+    color:#8b0000;
+    margin:20px 0;
 }
 
 /* ===== FOOTER ===== */
@@ -240,29 +409,63 @@ footer{
     background:#111;
     color:white;
     text-align:center;
-    padding:30px 20px;
+    padding:35px 20px;
     margin-top:50px;
 }
 
 footer strong{
     color:#d4af37;
+    font-size:22px;
 }
 
 footer p{
     margin:8px 0;
 }
 
+/* ===== BOUTON RETOUR ===== */
+
+.top-button{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#8b0000;
+    color:white;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+    z-index:999;
+    transition:.3s;
+}
+
+.top-button:hover{
+    background:#d4af37;
+    color:#111;
+    transform:translateY(-4px);
+}
+
 /* ===== MOBILE ===== */
 
 @media(max-width:600px){
 
+    header{
+        min-height:470px;
+        padding:40px 18px;
+    }
+
     .logo{
-        font-size:40px;
-        letter-spacing:3px;
+        font-size:39px;
+        letter-spacing:4px;
     }
 
     .name{
         font-size:18px;
+        letter-spacing:2px;
     }
 
     .subtitle{
@@ -271,7 +474,7 @@ footer p{
 
     .hero,
     .section{
-        padding:25px 18px;
+        padding:28px 18px;
     }
 
     .hero h2,
@@ -279,10 +482,27 @@ footer p{
         font-size:26px;
     }
 
+    nav{
+        padding:10px 5px;
+    }
+
     nav a{
         margin:3px;
         padding:8px 10px;
-        font-size:13px;
+        font-size:12px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+    }
+
+    .message p{
+        font-size:17px;
+    }
+
+    .contact-number{
+        font-size:21px;
     }
 
 }
@@ -290,7 +510,7 @@ footer p{
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <!-- ===== EN-TÊTE ===== -->
 
@@ -324,7 +544,11 @@ footer p{
 
     <a href="#valeurs">Ses valeurs</a>
 
+    <a href="#galerie">Galerie</a>
+
     <a href="#musique">Musique</a>
+
+    <a href="#contact">Contact</a>
 
 </nav>
 
@@ -352,28 +576,56 @@ footer p{
 
 
     <!-- PHOTO -->
-<div class="photo-box">
 
-    <img
-    src="photo.jpg"
-    alt="Ternezan Tedaisha Namara">
+    <div class="photo-box">
 
-</div>
-    
+        <img
+        src="photo.jpg"
+        alt="Ternezan Tedaisha Namara">
+
+    </div>
+
 
     <div class="buttons">
 
-    <a class="btn" href="#histoire">
-        Découvrir son histoire
-    </a>
+        <a class="btn" href="#histoire">
+            Découvrir son histoire
+        </a>
 
-    <a class="btn" href="#vision">
-        Découvrir sa vision
-    </a>
+        <a class="btn" href="#vision">
+            Découvrir sa vision
+        </a>
 
-    <a class="btn" href="tel:+50934850736">
-        📞 Contacter
-    </a>
+        <a class="btn" href="tel:+50934850736">
+            📞 Contacter
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ===== GALERIE ===== -->
+
+<section id="galerie" class="section gallery">
+
+    <h2>📸 Galerie</h2>
+
+    <p style="text-align:center;">
+        Quelques images qui représentent l'univers de Tedavision.
+    </p>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-card">
+
+            <img
+            src="photo.jpg"
+            alt="Ternezan Tedaisha Namara">
+
+            <p>Ternezan Tedaisha Namara</p>
+
+        </div>
 
     </div>
 
@@ -468,16 +720,14 @@ footer p{
 
 <!-- ===== MESSAGE ===== -->
 
-<section class="section">
+<section class="section message">
 
-    <h2>Un message de courage</h2>
+    <h2>❤️ Un message de courage</h2>
 
-    <p style="text-align:center; font-size:19px;">
-
+    <p>
         « La véritable force ne consiste pas à ne jamais
         rencontrer de difficultés, mais à trouver le courage
         de continuer son chemin avec dignité et espoir. »
-
     </p>
 
 </section>
@@ -494,20 +744,57 @@ footer p{
         de Tedavision.
     </p>
 
-    <audio controls>
+    <div class="music-player">
 
-        <source
-        src="Teddy_Hashtag_-_M_vle_w_Konnen(256k).mp3"
-        type="audio/mpeg">
+        <audio controls>
 
-        Votre navigateur ne supporte pas la lecture audio.
+            <source
+            src="Teddy_Hashtag_-_M_vle_w_Konnen(256k).mp3"
+            type="audio/mpeg">
 
-    </audio>
+            Votre navigateur ne supporte pas la lecture audio.
+
+        </audio>
+
+    </div>
+
+</section>
+
+
+<!-- ===== CONTACT ===== -->
+
+<section id="contact" class="section contact-box">
+
+    <h2>📞 Contact</h2>
+
+    <p>
+        Pour contacter Tedavision, utilisez le bouton
+        ci-dessous.
+    </p>
+
+    <div class="contact-number">
+        +509 3485-0736
+    </div>
+
+    <div class="buttons">
+
+        <a class="btn" href="tel:+50934850736">
+            📞 Appeler maintenant
+        </a>
+
+    </div>
 
 </section>
 
 
 </main>
+
+
+<!-- ===== RETOUR EN HAUT ===== -->
+
+<a class="top-button" href="#top" title="Retour en haut">
+    ↑
+</a>
 
 
 <!-- ===== PIED DE PAGE ===== -->
@@ -520,6 +807,10 @@ footer p{
 
     <p>
         Ternezan Tedaisha Namara
+    </p>
+
+    <p>
+        Une histoire de courage, de force et de détermination.
     </p>
 
     <p>
