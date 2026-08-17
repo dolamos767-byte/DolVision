@@ -43,10 +43,38 @@ body{
 
 /* ===== MODE SOMBRE ===== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f1ec;
+    color:#222;
+    overflow-x:hidden;
+    transition:.4s;
+}
+
+/* ===== MODE SOMBRE ===== */
+
 body.dark{
     background:#101010;
     color:#eee;
 }
+
+body.dark .hero,
+body.dark .section{
+    background:#1d1d1d;
+    color:#eee;
+}
+
+/* ===== ANIMATIONS ===== */
 
 body.dark .hero,
 body.dark .section{
