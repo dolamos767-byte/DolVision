@@ -8,9 +8,9 @@
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
+/* =========================
+   GENERAL
+========================= */
 
 *{
     margin:0;
@@ -47,10 +47,9 @@ body.dark .moment{
     background:#292929;
 }
 
-
-/* =========================================================
+/* =========================
    VIDEO INTRO
-========================================================= */
+========================= */
 
 #video-intro{
     position:fixed;
@@ -58,142 +57,159 @@ body.dark .moment{
     width:100%;
     height:100%;
     background:#000;
-    z-index:100000;
+    z-index:999999;
     display:flex;
     align-items:center;
     justify-content:center;
-    overflow:hidden;
+    flex-direction:column;
+    transition:opacity 1s ease, visibility 1s ease;
 }
 
 #intro-video{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:contain;
     background:#000;
-}
-
-.video-overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        to bottom,
-        rgba(0,0,0,.15),
-        rgba(0,0,0,.35)
-    );
-    pointer-events:none;
 }
 
 .video-message{
     position:absolute;
-    bottom:35px;
+    bottom:30px;
     left:50%;
     transform:translateX(-50%);
     color:white;
     text-align:center;
     font-size:14px;
-    background:rgba(0,0,0,.55);
+    background:rgba(0,0,0,.65);
     padding:10px 18px;
-    border-radius:25px;
-    z-index:2;
+    border-radius:20px;
+    z-index:5;
 }
 
-.video-skip{
+.video-error{
     position:absolute;
-    top:20px;
-    right:20px;
-    z-index:3;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    padding:25px;
+    background:#000;
+    color:white;
+    z-index:10;
+}
+
+.video-error h2{
+    color:#d4af37;
+    margin-bottom:15px;
+}
+
+.video-error p{
+    max-width:500px;
+    line-height:1.7;
+}
+
+#skip-video{
+    margin-top:20px;
+    border:none;
     background:#d4af37;
     color:#111;
-    border:none;
-    padding:10px 17px;
+    padding:12px 22px;
     border-radius:25px;
     font-weight:bold;
     cursor:pointer;
-    display:none;
 }
 
+/* =========================
+   TEDAISHA NAME AFTER VIDEO
+========================= */
 
-/* =========================================================
-   T E D A I S H A  INTRO
-========================================================= */
-
-#tedaisha-intro{
-    position:fixed;
+#tedaisha-final{
+    position:absolute;
     inset:0;
-    z-index:99999;
     background:
         radial-gradient(circle at center,
-        rgba(212,175,55,.18),
+        rgba(212,175,55,.25),
         transparent 35%),
-        linear-gradient(
-        135deg,
-        #050505,
-        #171717,
-        #3b2b10
-        );
-
+        linear-gradient(135deg,#050505,#202020,#8b6b32);
     display:none;
-    justify-content:center;
     align-items:center;
-    overflow:hidden;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    z-index:20;
+    opacity:0;
 }
 
-.tedaisha-light{
-    position:absolute;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:rgba(212,175,55,.08);
-    box-shadow:
-        0 0 100px rgba(212,175,55,.25),
-        0 0 200px rgba(212,175,55,.12);
-    animation:lightPulse 2.5s infinite;
+#tedaisha-final.show{
+    display:flex;
+    animation:finalAppear 1.5s ease forwards;
 }
 
-.tedaisha-logo{
-    position:relative;
-    z-index:2;
+.tedaisha-big{
     color:#d4af37;
-    font-size:clamp(45px,10vw,110px);
+    font-size:clamp(42px,10vw,100px);
     font-weight:900;
     letter-spacing:clamp(5px,2vw,18px);
-    text-align:center;
-
     text-shadow:
         0 0 5px #d4af37,
         0 0 15px rgba(212,175,55,.8),
-        0 0 35px rgba(212,175,55,.6),
-        0 0 70px rgba(212,175,55,.4);
-
+        0 0 35px rgba(212,175,55,.6);
     animation:
-        tedaishaAppear 2s ease forwards,
-        tedaishaGlow 2s ease-in-out infinite alternate;
+        tadaishaZoom 2s ease forwards,
+        goldGlow 2.5s ease-in-out infinite 2s;
 }
 
-.tedaisha-line{
-    position:absolute;
-    width:0;
-    height:3px;
+.tedaisha-subtitle{
+    margin-top:20px;
+    color:white;
+    font-size:clamp(15px,3vw,23px);
+    letter-spacing:4px;
+    opacity:0;
+    animation:subtitleAppear 1.5s ease 1s forwards;
+}
+
+.enter-site{
+    margin-top:35px;
+    border:none;
+    padding:15px 30px;
+    border-radius:30px;
     background:#d4af37;
-    box-shadow:0 0 20px #d4af37;
-    animation:lineAppear 1.8s ease 1s forwards;
+    color:#111;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(20px);
+    animation:buttonAppear 1s ease 2s forwards;
+    box-shadow:0 0 25px rgba(212,175,55,.35);
 }
 
-@keyframes tedaishaAppear{
+.enter-site:hover{
+    transform:translateY(-3px);
+    background:#fff;
+}
 
+@keyframes finalAppear{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes tadaishaZoom{
     0%{
         opacity:0;
-        transform:scale(.25) rotateX(70deg);
-        letter-spacing:45px;
-        filter:blur(15px);
+        transform:scale(.3);
+        letter-spacing:30px;
     }
-
-    50%{
+    60%{
         opacity:1;
-        transform:scale(1.08) rotateX(0);
-        filter:blur(0);
+        transform:scale(1.12);
     }
-
     100%{
         opacity:1;
         transform:scale(1);
@@ -201,67 +217,42 @@ body.dark .moment{
     }
 }
 
-@keyframes tedaishaGlow{
-
-    from{
+@keyframes goldGlow{
+    0%,100%{
         text-shadow:
         0 0 5px #d4af37,
-        0 0 15px rgba(212,175,55,.7),
-        0 0 35px rgba(212,175,55,.4);
+        0 0 15px rgba(212,175,55,.8),
+        0 0 35px rgba(212,175,55,.5);
     }
-
-    to{
-        text-shadow:
-        0 0 10px #d4af37,
-        0 0 30px #d4af37,
-        0 0 65px rgba(212,175,55,.8),
-        0 0 100px rgba(212,175,55,.4);
-    }
-}
-
-@keyframes lineAppear{
-
-    from{
-        width:0;
-        opacity:0;
-    }
-
-    to{
-        width:min(500px,75vw);
-        opacity:1;
-    }
-}
-
-@keyframes lightPulse{
-
-    0%,100%{
-        transform:scale(.8);
-        opacity:.5;
-    }
-
     50%{
-        transform:scale(1.15);
-        opacity:1;
+        text-shadow:
+        0 0 10px #fff,
+        0 0 25px #d4af37,
+        0 0 55px #d4af37;
     }
 }
 
-.tedaisha-hide{
-    animation:introFinalOut 1.3s ease forwards;
-}
-
-@keyframes introFinalOut{
-
-    to{
+@keyframes subtitleAppear{
+    from{
         opacity:0;
-        visibility:hidden;
-        pointer-events:none;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
+@keyframes buttonAppear{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-/* =========================================================
+/* =========================
    HEADER
-========================================================= */
+========================= */
 
 header{
     min-height:520px;
@@ -271,15 +262,13 @@ header{
     align-items:center;
     text-align:center;
     padding:50px 20px;
-
     background:
         linear-gradient(
-        135deg,
-        #111 0%,
-        #292929 55%,
-        #8b6b32 100%
+            135deg,
+            #111 0%,
+            #292929 55%,
+            #8b6b32 100%
         );
-
     color:white;
     position:relative;
     overflow:hidden;
@@ -320,23 +309,9 @@ header{
     color:#e8e8e8;
 }
 
-@keyframes glow{
-
-    0%,100%{
-        text-shadow:
-        0 0 5px rgba(212,175,55,.2);
-    }
-
-    50%{
-        text-shadow:
-        0 0 25px rgba(212,175,55,.7);
-    }
-}
-
-
-/* =========================================================
+/* =========================
    TOP TOOLS
-========================================================= */
+========================= */
 
 .top-tools{
     position:fixed;
@@ -358,14 +333,9 @@ header{
     cursor:pointer;
 }
 
-.language-select{
-    outline:none;
-}
-
-
-/* =========================================================
+/* =========================
    NAV
-========================================================= */
+========================= */
 
 nav{
     position:sticky;
@@ -393,10 +363,9 @@ nav a:hover{
     color:#111;
 }
 
-
-/* =========================================================
+/* =========================
    CONTAINER
-========================================================= */
+========================= */
 
 .container{
     max-width:1100px;
@@ -412,19 +381,6 @@ nav a:hover{
     margin-bottom:35px;
     box-shadow:0 10px 35px rgba(0,0,0,.12);
     animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
 
 .hero{
@@ -455,10 +411,9 @@ body.dark .section h2{
     max-width:800px;
 }
 
-
-/* =========================================================
+/* =========================
    PHOTO
-========================================================= */
+========================= */
 
 .photo-box{
     width:100%;
@@ -475,10 +430,9 @@ body.dark .section h2{
     display:block;
 }
 
-
-/* =========================================================
+/* =========================
    BUTTONS
-========================================================= */
+========================= */
 
 .buttons{
     display:flex;
@@ -507,15 +461,14 @@ body.dark .section h2{
     transform:translateY(-3px);
 }
 
-
-/* =========================================================
+/* =========================
    ABOUT
-========================================================= */
+========================= */
 
 .about-grid{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
+        repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
     margin-top:25px;
 }
@@ -536,10 +489,9 @@ body.dark .about-card h3{
     color:#d4af37;
 }
 
-
-/* =========================================================
+/* =========================
    VALUES
-========================================================= */
+========================= */
 
 .values{
     display:flex;
@@ -561,15 +513,14 @@ body.dark .about-card h3{
     transform:translateY(-4px);
 }
 
-
-/* =========================================================
+/* =========================
    GALLERY
-========================================================= */
+========================= */
 
 .gallery-grid{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
+        repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
     margin-top:25px;
 }
@@ -597,15 +548,14 @@ body.dark .about-card h3{
     font-weight:bold;
 }
 
-
-/* =========================================================
+/* =========================
    MOMENTS
-========================================================= */
+========================= */
 
 .moments{
     display:grid;
     grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
+        repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
     margin-top:25px;
 }
@@ -626,10 +576,9 @@ body.dark .moment h3{
     color:#d4af37;
 }
 
-
-/* =========================================================
+/* =========================
    FORM
-========================================================= */
+========================= */
 
 .message-form{
     max-width:700px;
@@ -652,20 +601,18 @@ body.dark .moment h3{
     resize:vertical;
 }
 
-
-/* =========================================================
+/* =========================
    MUSIC
-========================================================= */
+========================= */
 
 .music-box{
     text-align:center;
     background:
-    linear-gradient(
-        135deg,
-        #111,
-        #292929
-    )!important;
-
+        linear-gradient(
+            135deg,
+            #111,
+            #292929
+        )!important;
     color:white!important;
 }
 
@@ -685,10 +632,9 @@ audio{
     width:100%;
 }
 
-
-/* =========================================================
+/* =========================
    CONTACT
-========================================================= */
+========================= */
 
 .contact-box{
     text-align:center;
@@ -705,19 +651,17 @@ body.dark .contact-number{
     color:#d4af37;
 }
 
-
-/* =========================================================
-   COURAGE MESSAGE
-========================================================= */
+/* =========================
+   MESSAGE COURAGE
+========================= */
 
 .message{
     background:
-    linear-gradient(
-        135deg,
-        #111,
-        #292929
-    )!important;
-
+        linear-gradient(
+            135deg,
+            #111,
+            #292929
+        )!important;
     color:white!important;
     text-align:center;
 }
@@ -726,10 +670,9 @@ body.dark .contact-number{
     color:#d4af37!important;
 }
 
-
-/* =========================================================
+/* =========================
    TOP BUTTON
-========================================================= */
+========================= */
 
 .top-button{
     position:fixed;
@@ -749,10 +692,9 @@ body.dark .contact-number{
     box-shadow:0 5px 20px rgba(0,0,0,.3);
 }
 
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer{
     background:#111;
@@ -770,10 +712,9 @@ footer p{
     margin:8px;
 }
 
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media(max-width:600px){
 
@@ -820,11 +761,6 @@ footer p{
         max-width:300px;
     }
 
-    .tedaisha-logo{
-        font-size:40px;
-        letter-spacing:5px;
-    }
-
     .top-tools{
         right:8px;
         top:8px;
@@ -838,74 +774,122 @@ footer p{
     }
 
     .video-message{
-        bottom:20px;
+        bottom:15px;
         font-size:12px;
+    }
+
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes glow{
+    0%,100%{
+        text-shadow:
+        0 0 5px rgba(212,175,55,.2);
+    }
+
+    50%{
+        text-shadow:
+        0 0 25px rgba(212,175,55,.7);
     }
 }
 
 </style>
 </head>
 
-
 <body id="top">
 
-
-<!-- =======================================================
+<!-- =====================================================
      VIDEO INTRO
-======================================================== -->
+===================================================== -->
 
 <div id="video-intro">
 
     <video
         id="intro-video"
         playsinline
-        preload="auto">
+        preload="auto"
+        controls>
 
         <source
             src="1787073839108.mp4"
             type="video/mp4">
 
-        Votre navigateur ne supporte pas
-        la lecture vidéo.
+        Navigatè ou a pa sipòte videyo a.
 
     </video>
 
-    <div class="video-overlay"></div>
-
     <div class="video-message">
-        🎬 Regardez la présentation jusqu'à la fin
+        🎬 Gade videyo a pou antre sou Tedavision
+    </div>
+
+    <div class="video-error" id="video-error">
+
+        <h2>TEDAVISION</h2>
+
+        <p>
+            Videyo a pa rive chaje.
+            Verifye si fichye
+            <strong>1787073839108.mp4</strong>
+            la nan menm folder ak
+            <strong>index.html</strong>.
+        </p>
+
+        <button id="skip-video">
+            Kontinye sou sit la
+        </button>
+
+    </div>
+
+    <!--
+       Non Tedaisha parèt APRÈ videyo a fini
+    -->
+
+    <div id="tedaisha-final">
+
+        <div class="tedaisha-big">
+            TEDAISHA
+        </div>
+
+        <div class="tedaisha-subtitle">
+            Ternezan Tedaisha Namara
+        </div>
+
+        <button
+            class="enter-site"
+            onclick="enterWebsite()">
+
+            ✨ Antre sou Tedavision
+
+        </button>
+
     </div>
 
 </div>
 
 
-<!-- =======================================================
-     TEDAISHA INTRO
-======================================================== -->
-
-<div id="tedaisha-intro">
-
-    <div class="tedaisha-light"></div>
-
-    <div class="tedaisha-logo">
-        TEDAISHA
-    </div>
-
-    <div class="tedaisha-line"></div>
-
-</div>
-
-
-<!-- =======================================================
-     TOP TOOLS
-======================================================== -->
+<!-- =====================================================
+     LANGUE / MODE
+===================================================== -->
 
 <div class="top-tools">
 
     <button
         class="tool-btn"
-        onclick="toggleMode()"
-        aria-label="Changer le mode">
+        onclick="toggleMode()">
 
         🌙
 
@@ -913,8 +897,7 @@ footer p{
 
     <select
         class="language-select"
-        onchange="changeLanguage(this.value)"
-        aria-label="Language">
+        onchange="changeLanguage(this.value)">
 
         <option value="fr">
             🇫🇷 Français
@@ -937,9 +920,9 @@ footer p{
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      HEADER
-======================================================== -->
+===================================================== -->
 
 <header>
 
@@ -955,35 +938,23 @@ footer p{
 
     <div class="line"></div>
 
-    <div
-        class="name"
-        data-fr="Ternezan Tedaisha Namara"
-        data-ht="Ternezan Tedaisha Namara"
-        data-en="Ternezan Tedaisha Namara"
-        data-es="Ternezan Tedaisha Namara">
-
+    <div class="name">
         Ternezan Tedaisha Namara
-
     </div>
 
-    <div
-        class="subtitle"
-        data-fr="Une histoire de courage, de résilience, de dignité et de détermination."
-        data-ht="Yon istwa kouraj, rezilyans, diyite ak detèminasyon."
-        data-en="A story of courage, resilience, dignity and determination."
-        data-es="Una historia de valor, resiliencia, dignidad y determinación.">
-
-        Une histoire de courage, de résilience,
-        de dignité et de détermination.
-
+    <div class="subtitle">
+        Une histoire de courage,
+        de résilience,
+        de dignité
+        et de détermination.
     </div>
 
 </header>
 
 
-<!-- =======================================================
-     NAVIGATION
-======================================================== -->
+<!-- =====================================================
+     MENU
+===================================================== -->
 
 <nav>
 
@@ -1070,45 +1041,165 @@ footer p{
 </nav>
 
 
-<!-- =======================================================
+<!-- =====================================================
      MAIN
-======================================================== -->
+===================================================== -->
 
 <main class="container">
 
 
-<!-- =======================================================
-     ACCUEIL
-======================================================== -->
+<!-- ================= ACCUEIL ================= -->
 
 <section id="accueil" class="hero">
 
-    <h2
-        data-fr="Bienvenue sur Tedavision"
-        data-ht="Byenveni sou Tedavision"
-        data-en="Welcome to Tedavision"
-        data-es="Bienvenido a Tedavision">
-
+    <h2>
         Bienvenue sur Tedavision
-
     </h2>
 
-
-    <p
-        class="welcome-text"
-        data-fr="Découvrez l'univers de Ternezan Tedaisha Namara, une femme dont le parcours est marqué par la force, le courage et la persévérance."
-        data-ht="Dekouvri linivè Ternezan Tedaisha Namara, yon fanm ki gen yon pakou ki make ak fòs, kouraj ak pèseverans."
-        data-en="Discover the world of Ternezan Tedaisha Namara, a woman whose journey is marked by strength, courage and perseverance."
-        data-es="Descubre el universo de Ternezan Tedaisha Namara, una mujer cuyo camino está marcado por la fuerza, el valor y la perseverancia.">
+    <p class="welcome-text">
 
         Découvrez l'univers de
-        <strong>Ternezan Tedaisha Namara</strong>,
-        une femme dont le parcours est marqué
-        par la force, le courage et la persévérance.
+        <strong>
+            Ternezan Tedaisha Namara
+        </strong>,
+
+        une femme dont le parcours
+        est marqué par la force,
+        le courage et la persévérance.
+
+    </p>
+
+    <p class="welcome-text2">
+
+        Derrière chaque épreuve se trouve
+        une leçon, derrière chaque difficulté
+        se trouve une force, et derrière
+        chaque rêve se trouve une volonté
+        d'avancer.
 
     </p>
 
 
+    <div class="photo-box">
+
+        <img
+            src="photo.jpg"
+            alt="Ternezan Tedaisha Namara">
+
+    </div>
+
+
+    <div class="buttons">
+
+        <a
+            class="btn"
+            href="#histoire"
+            data-fr="Découvrir son histoire"
+            data-ht="Dekouvri istwa li"
+            data-en="Discover her story"
+            data-es="Descubrir su historia">
+
+            Découvrir son histoire
+
+        </a>
+
+
+        <a
+            class="btn"
+            href="#vision"
+            data-fr="Découvrir sa vision"
+            data-ht="Dekouvri vizyon li"
+            data-en="Discover her vision"
+            data-es="Descubrir su visión">
+
+            Découvrir sa vision
+
+        </a>
+
+
+        <a
+            class="btn"
+            href="tel:+50934850736"
+            data-fr="📞 Contacter"
+            data-ht="📞 Kontakte"
+            data-en="📞 Contact"
+            data-es="📞 Contactar">
+
+            📞 Contacter
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= À PROPOS ================= -->
+
+<section
+    id="apropos"
+    class="section">
+
+    <h2>
+        ⭐ À propos de Tedavision
+    </h2>
+
     <p
-        class="welcome-text2"
-        data-fr="Derrière chaque épreuve se trouve une leçon, derrière chaque difficulté se trouve une force, et derrière chaque rêve se trouve 
+        class="about-main"
+        style="text-align:center;">
+
+        Tedavision est un espace consacré
+        à l'histoire, à la force et aux valeurs
+        de Ternezan Tedaisha Namara.
+
+    </p>
+
+
+    <div class="about-grid">
+
+        <div class="about-card">
+
+            <h3>
+                Notre objectif
+            </h3>
+
+            <p>
+
+                Partager un message positif,
+                inspirant et rempli d'espoir.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                Notre vision
+            </h3>
+
+            <p>
+
+                Mettre en valeur
+                la détermination,
+                la dignité
+                et la persévérance.
+
+            </p>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <h3>
+                Notre message
+            </h3>
+
+            <p>
+
+                Chaque difficulté peut devenir
+                une nouvelle source de force.
+
+        
