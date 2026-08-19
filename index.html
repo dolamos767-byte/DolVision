@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,7 @@
 <style>
 
 /* =========================
-   BASE
+   GENERAL
 ========================= */
 
 *{
@@ -24,7 +23,7 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
     background:#f4f1ec;
     color:#222;
     overflow-x:hidden;
@@ -74,8 +73,45 @@ body.dark .moment{
 }
 
 
+/* BUTTON PASSER */
+
+#skip-video{
+    position:absolute;
+
+    right:20px;
+    bottom:25px;
+
+    z-index:10;
+
+    border:none;
+
+    padding:13px 22px;
+
+    border-radius:30px;
+
+    background:rgba(212,175,55,.95);
+
+    color:#111;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.5);
+
+    transition:.3s;
+}
+
+#skip-video:hover{
+    transform:scale(1.05);
+    background:#fff;
+}
+
+
 /* =========================
-   TEDAISHA EFFECT
+   TEDAISHA SCREEN
 ========================= */
 
 #tedaisha-screen{
@@ -86,6 +122,7 @@ body.dark .moment{
 
     justify-content:center;
     align-items:center;
+
     flex-direction:column;
 
     text-align:center;
@@ -93,64 +130,61 @@ body.dark .moment{
     background:
         radial-gradient(
             circle at center,
-            #6d5422 0%,
-            #27200f 25%,
-            #111 55%,
+            #80632a 0%,
+            #2a210f 28%,
+            #111 60%,
             #000 100%
         );
 }
 
 #tedaisha-screen.show{
     display:flex;
-    animation:tedaishaBackground 1s ease forwards;
+    animation:screenAppear 1s ease forwards;
 }
 
 .tedaisha-title{
     color:#d4af37;
 
     font-size:
-        clamp(48px, 13vw, 145px);
+        clamp(50px,14vw,150px);
 
     font-weight:900;
 
     letter-spacing:
-        clamp(5px, 2vw, 22px);
+        clamp(5px,2vw,22px);
 
     opacity:0;
 
-    transform:scale(.3);
+    transform:scale(.25);
 
     filter:blur(15px);
 
     text-shadow:
-        0 0 10px rgba(212,175,55,.8),
-        0 0 30px rgba(212,175,55,.8),
-        0 0 70px rgba(212,175,55,.8);
+        0 0 15px rgba(212,175,55,.9),
+        0 0 40px rgba(212,175,55,.9),
+        0 0 90px rgba(212,175,55,.8);
 
-    animation:
-        tedaishaEnter 2.2s ease forwards,
-        tedaishaGlow 2s ease-in-out 2.2s infinite;
+    animation:tedaishaIn 2.2s ease forwards;
 }
 
 .tedaisha-name{
-    color:#fff;
+    color:white;
 
     font-size:
-        clamp(13px, 3vw, 25px);
+        clamp(13px,3vw,25px);
 
     letter-spacing:4px;
 
-    margin-top:18px;
+    margin-top:15px;
 
     opacity:0;
 
     transform:translateY(25px);
 
-    animation:
-        nameEnter 1.2s ease 1s forwards;
+    animation:nameIn 1.2s ease 1s forwards;
 }
 
-@keyframes tedaishaBackground{
+@keyframes screenAppear{
 
     from{
         opacity:0;
@@ -161,13 +195,13 @@ body.dark .moment{
     }
 }
 
-@keyframes tedaishaEnter{
+@keyframes tedaishaIn{
 
     0%{
         opacity:0;
-        transform:scale(.3);
+        transform:scale(.25);
         filter:blur(15px);
-        letter-spacing:40px;
+        letter-spacing:35px;
     }
 
     55%{
@@ -181,28 +215,11 @@ body.dark .moment{
         transform:scale(1);
         filter:blur(0);
         letter-spacing:
-            clamp(5px, 2vw, 22px);
+            clamp(5px,2vw,22px);
     }
 }
 
-@keyframes tedaishaGlow{
-
-    0%,100%{
-        text-shadow:
-            0 0 10px rgba(212,175,55,.6),
-            0 0 30px rgba(212,175,55,.7),
-            0 0 65px rgba(212,175,55,.6);
-    }
-
-    50%{
-        text-shadow:
-            0 0 15px rgba(212,175,55,1),
-            0 0 45px rgba(212,175,55,1),
-            0 0 100px rgba(212,175,55,1);
-    }
-}
-
-@keyframes nameEnter{
+@keyframes nameIn{
 
     from{
         opacity:0;
@@ -217,17 +234,16 @@ body.dark .moment{
 
 
 /* =========================
-   SITE
+   SITE APPEAR
 ========================= */
 
 #site-content{
-    opacity:0;
-    visibility:hidden;
+    display:none;
 }
 
 #site-content.visible{
-    opacity:1;
-    visibility:visible;
+    display:block;
+
     animation:siteAppear 1.2s ease forwards;
 }
 
@@ -253,8 +269,11 @@ header{
     min-height:520px;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
@@ -272,6 +291,7 @@ header{
     color:white;
 
     position:relative;
+
     overflow:hidden;
 }
 
@@ -288,7 +308,9 @@ header{
 
 .logo{
     font-size:58px;
+
     font-weight:bold;
+
     letter-spacing:7px;
 
     animation:glow 3s infinite;
@@ -296,6 +318,7 @@ header{
 
 .line{
     width:100px;
+
     height:3px;
 
     background:#d4af37;
@@ -305,6 +328,7 @@ header{
 
 .name{
     font-size:23px;
+
     letter-spacing:3px;
 
     margin-bottom:18px;
@@ -314,6 +338,7 @@ header{
     max-width:720px;
 
     font-size:19px;
+
     line-height:1.8;
 
     color:#e8e8e8;
@@ -341,11 +366,13 @@ header{
     position:fixed;
 
     top:15px;
+
     right:15px;
 
     z-index:2000;
 
     display:flex;
+
     gap:8px;
 }
 
@@ -408,6 +435,7 @@ nav a{
 
 nav a:hover{
     background:#d4af37;
+
     color:#111;
 }
 
@@ -438,19 +466,6 @@ nav a:hover{
         0 10px 35px rgba(0,0,0,.12);
 
     animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
 
 .hero{
@@ -486,6 +501,21 @@ body.dark .section h2{
     max-width:800px;
 }
 
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
 
 /* =========================
    PHOTO
@@ -510,6 +540,7 @@ body.dark .section h2{
 
 .photo-box img{
     width:100%;
+
     display:block;
 }
 
@@ -588,6 +619,7 @@ body.dark .section h2{
 
 .about-card h3{
     color:#8b0000;
+
     margin-bottom:12px;
 }
 
@@ -663,6 +695,7 @@ body.dark .about-card h3{
 
 .gallery-card img{
     width:100%;
+
     display:block;
 }
 
@@ -717,6 +750,7 @@ body.dark .moment h3{
 
 .message-form{
     max-width:700px;
+
     margin:25px auto;
 }
 
@@ -806,7 +840,7 @@ body.dark .contact-number{
 
 
 /* =========================
-   COURAGE MESSAGE
+   MESSAGE
 ========================= */
 
 .message{
@@ -828,16 +862,18 @@ body.dark .contact-number{
 
 
 /* =========================
-   TOP BUTTON
+   TOP
 ========================= */
 
 .top-button{
     position:fixed;
 
     bottom:20px;
+
     right:20px;
 
     width:50px;
+
     height:50px;
 
     border-radius:50%;
@@ -851,6 +887,7 @@ body.dark .contact-number{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     font-size:22px;
@@ -895,16 +932,19 @@ footer p{
 
     header{
         min-height:500px;
+
         padding:40px 18px;
     }
 
     .logo{
         font-size:40px;
+
         letter-spacing:4px;
     }
 
     .logo-image{
         width:95px;
+
         height:95px;
     }
 
@@ -928,33 +968,42 @@ footer p{
 
     nav a{
         padding:8px 9px;
+
         font-size:12px;
     }
 
     .btn{
         width:100%;
+
         max-width:300px;
     }
 
     .top-tools{
         right:8px;
+
         top:8px;
+
         gap:5px;
     }
 
     .tool-btn,
     .language-select{
         padding:8px 9px;
+
         font-size:11px;
     }
 
-    .tedaisha-title{
-        font-size:
-            clamp(42px,13vw,85px);
+    #skip-video{
+        right:12px;
+
+        bottom:15px;
+
+        padding:11px 18px;
+
+        font-size:13px;
     }
 
     .tedaisha-name{
-        font-size:13px;
         letter-spacing:2px;
     }
 }
@@ -966,9 +1015,9 @@ footer p{
 <body id="top">
 
 
-<!-- =====================================================
+<!-- ==================================================
      VIDEO INTRO
-===================================================== -->
+================================================== -->
 
 <div id="intro-screen">
 
@@ -988,7 +1037,18 @@ footer p{
     </video>
 
 
-    <!-- TEDAISHA APRES LA FIN DU VIDEO -->
+    <!-- Moun ki pa vle tande a ka pase -->
+
+    <button
+        id="skip-video"
+        type="button">
+
+        ⏭️ Passer la vidéo
+
+    </button>
+
+
+    <!-- Tedaisha ap parèt apre videyo a -->
 
     <div id="tedaisha-screen">
 
@@ -1006,9 +1066,9 @@ footer p{
 
 
 
-<!-- =====================================================
-     SITE CONTENT
-===================================================== -->
+<!-- ==================================================
+     SITE PRINCIPAL
+================================================== -->
 
 <div id="site-content">
 
@@ -1086,7 +1146,7 @@ footer p{
 
 
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 
 <nav>
 
@@ -1098,6 +1158,7 @@ footer p{
        Accueil
     </a>
 
+
     <a href="#apropos"
        data-fr="À propos"
        data-ht="Konsènan"
@@ -1105,6 +1166,7 @@ footer p{
        data-es="Acerca de">
        À propos
     </a>
+
 
     <a href="#histoire"
        data-fr="Son histoire"
@@ -1114,6 +1176,7 @@ footer p{
        Son histoire
     </a>
 
+
     <a href="#vision"
        data-fr="Sa vision"
        data-ht="Vizyon li"
@@ -1121,6 +1184,7 @@ footer p{
        data-es="Su visión">
        Sa vision
     </a>
+
 
     <a href="#valeurs"
        data-fr="Ses valeurs"
@@ -1130,6 +1194,7 @@ footer p{
        Ses valeurs
     </a>
 
+
     <a href="#galerie"
        data-fr="Galerie"
        data-ht="Galri"
@@ -1137,6 +1202,7 @@ footer p{
        data-es="Galería">
        Galerie
     </a>
+
 
     <a href="#moments"
        data-fr="Moments"
@@ -1146,6 +1212,7 @@ footer p{
        Moments
     </a>
 
+
     <a href="#musique"
        data-fr="Musique"
        data-ht="Mizik"
@@ -1154,6 +1221,7 @@ footer p{
        Musique
     </a>
 
+
     <a href="#messages"
        data-fr="Messages"
        data-ht="Mesaj"
@@ -1161,6 +1229,7 @@ footer p{
        data-es="Mensajes">
        Messages
     </a>
+
 
     <a href="#contact"
        data-fr="Contact"
@@ -1194,19 +1263,18 @@ footer p{
         <strong>
             Ternezan Tedaisha Namara
         </strong>,
-        une femme dont le parcours
-        est marqué par la force,
-        le courage et la persévérance.
+        une femme dont le parcours est marqué
+        par la force, le courage et la persévérance.
 
     </p>
 
 
     <p class="welcome-text2">
 
-        Derrière chaque épreuve se trouve
-        une leçon, derrière chaque difficulté
-        se trouve une force, et derrière chaque
-        rêve se trouve une volonté d'avancer.
+        Derrière chaque épreuve se trouve une leçon,
+        derrière chaque difficulté se trouve une force,
+        et derrière chaque rêve se trouve une volonté
+        d'avancer.
 
     </p>
 
@@ -1277,9 +1345,7 @@ footer p{
     </h2>
 
 
-    <p
-        class="about-main"
-        style="text-align:center;">
+    <p style="text-align:center;">
 
         Tedavision est un espace consacré
         à l'histoire, à la force et aux valeurs
@@ -1350,31 +1416,25 @@ footer p{
     </h2>
 
 
-    <p class="history1">
-
+    <p>
         L'histoire de Ternezan Tedaisha Namara
         est celle d'une femme qui avance
         avec courage et détermination.
-
     </p>
 
 
-    <p class="history2">
-
+    <p>
         Les difficultés de la vie peuvent parfois
         mettre la force d'une personne à l'épreuve.
         Mais certaines personnes choisissent
         de continuer à avancer.
-
     </p>
 
 
-    <p class="history3">
-
+    <p>
         Son parcours représente la résilience,
         la patience, la dignité et la volonté
         de ne jamais abandonner ses rêves.
-
     </p>
 
 </section>
@@ -1392,31 +1452,25 @@ footer p{
     </h2>
 
 
-    <p class="vision1">
-
+    <p>
         La vision de Tedavision est de transmettre
         un message positif, rempli d'espoir,
         de courage et de confiance.
-
     </p>
 
 
-    <p class="vision2">
-
+    <p>
         Chaque personne possède une lumière
         intérieure. Même lorsque le chemin devient
         difficile, il est toujours possible
         de continuer à avancer.
-
     </p>
 
 
-    <p class="vision3">
-
+    <p>
         Tedavision veut être un espace où la force,
         la beauté intérieure et la détermination
         sont mises en valeur.
-
     </p>
 
 </section>
@@ -1430,4 +1484,8 @@ footer p{
     class="section">
 
     <h2>
-     
+        Ses valeurs
+    </h2>
+
+
+    <p sty
