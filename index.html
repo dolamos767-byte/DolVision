@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================
-   BASE
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -23,7 +19,7 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#f4f1ec;
     color:#222;
     overflow-x:hidden;
@@ -47,22 +43,14 @@ body.dark .moment{
     background:#292929;
 }
 
-
 /* =========================
    INTRO TEDAISHA
-   PA GEN VIDEO LA
 ========================= */
 
 #tedaisha-intro{
     position:fixed;
     inset:0;
     z-index:999999;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
 
     background:
         radial-gradient(
@@ -72,6 +60,12 @@ body.dark .moment{
             #181818 55%,
             #000 100%
         );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
 
     animation:introOut 1s ease 4s forwards;
 }
@@ -97,8 +91,7 @@ body.dark .moment{
         0 0 60px #d4af37,
         0 0 100px rgba(212,175,55,.8);
 
-    animation:
-        introText 2.2s ease forwards;
+    animation:introText 2.2s ease forwards;
 }
 
 .tedaisha-subtitle{
@@ -112,8 +105,7 @@ body.dark .moment{
 
     opacity:0;
 
-    animation:
-        introSubtitle 1.2s ease 1.2s forwards;
+    animation:introSubtitle 1.2s ease 1.2s forwards;
 }
 
 @keyframes introText{
@@ -165,6 +157,32 @@ body.dark .moment{
     }
 }
 
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes glow{
+
+    0%,100%{
+        text-shadow:
+        0 0 5px rgba(212,175,55,.2);
+    }
+
+    50%{
+        text-shadow:
+        0 0 25px rgba(212,175,55,.7);
+    }
+}
+
 
 /* =========================
    HEADER
@@ -209,7 +227,9 @@ header{
 
 .logo{
     font-size:58px;
+
     font-weight:bold;
+
     letter-spacing:7px;
 
     animation:glow 3s infinite;
@@ -242,27 +262,13 @@ header{
     color:#e8e8e8;
 }
 
-@keyframes glow{
-
-    0%,100%{
-        text-shadow:
-            0 0 5px
-            rgba(212,175,55,.2);
-    }
-
-    50%{
-        text-shadow:
-            0 0 25px
-            rgba(212,175,55,.7);
-    }
-}
-
 
 /* =========================
-   LANGUE / MODE
+   LANGUE
 ========================= */
 
 .top-tools{
+
     position:fixed;
 
     top:15px;
@@ -277,6 +283,7 @@ header{
 
 .tool-btn,
 .language-select{
+
     border:none;
 
     padding:10px 13px;
@@ -298,6 +305,7 @@ header{
 ========================= */
 
 nav{
+
     position:sticky;
 
     top:0;
@@ -311,11 +319,11 @@ nav{
     text-align:center;
 
     box-shadow:
-        0 3px 18px
-        rgba(0,0,0,.3);
+    0 3px 18px rgba(0,0,0,.3);
 }
 
 nav a{
+
     display:inline-block;
 
     color:white;
@@ -334,7 +342,9 @@ nav a{
 }
 
 nav a:hover{
+
     background:#d4af37;
+
     color:#111;
 }
 
@@ -344,6 +354,7 @@ nav a:hover{
 ========================= */
 
 .container{
+
     max-width:1100px;
 
     margin:auto;
@@ -353,6 +364,7 @@ nav a:hover{
 
 .hero,
 .section{
+
     background:white;
 
     border-radius:28px;
@@ -362,18 +374,19 @@ nav a:hover{
     margin-bottom:35px;
 
     box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.12);
+    0 10px 35px rgba(0,0,0,.12);
 
     animation:fadeUp .8s ease;
 }
 
 .hero{
+
     text-align:center;
 }
 
 .hero h2,
 .section h2{
+
     color:#8b0000;
 
     text-align:center;
@@ -383,15 +396,18 @@ nav a:hover{
 
 body.dark .hero h2,
 body.dark .section h2{
+
     color:#d4af37;
 }
 
 .hero h2{
+
     font-size:34px;
 }
 
 .hero p,
 .section p{
+
     line-height:1.9;
 
     font-size:17px;
@@ -401,25 +417,13 @@ body.dark .section h2{
     max-width:800px;
 }
 
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
 
 /* =========================
-   PHOTO
+   PHOTO PRINCIPALE
 ========================= */
 
 .photo-box{
+
     width:100%;
 
     max-width:520px;
@@ -431,14 +435,15 @@ body.dark .section h2{
     overflow:hidden;
 
     box-shadow:
-        0 12px 35px
-        rgba(0,0,0,.25);
+    0 12px 35px rgba(0,0,0,.25);
 
     border:5px solid white;
 }
 
 .photo-box img{
+
     width:100%;
+
     display:block;
 }
 
@@ -448,6 +453,7 @@ body.dark .section h2{
 ========================= */
 
 .buttons{
+
     display:flex;
 
     flex-wrap:wrap;
@@ -460,6 +466,7 @@ body.dark .section h2{
 }
 
 .btn{
+
     display:inline-block;
 
     padding:14px 24px;
@@ -482,6 +489,7 @@ body.dark .section h2{
 }
 
 .btn:hover{
+
     background:#d4af37;
 
     color:#111;
@@ -495,13 +503,14 @@ body.dark .section h2{
 ========================= */
 
 .about-grid{
+
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px,1fr)
-        );
+    repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
 
     gap:20px;
 
@@ -509,6 +518,7 @@ body.dark .section h2{
 }
 
 .about-card{
+
     padding:25px;
 
     border-radius:20px;
@@ -519,12 +529,14 @@ body.dark .section h2{
 }
 
 .about-card h3{
+
     color:#8b0000;
 
     margin-bottom:12px;
 }
 
 body.dark .about-card h3{
+
     color:#d4af37;
 }
 
@@ -534,6 +546,7 @@ body.dark .about-card h3{
 ========================= */
 
 .values{
+
     display:flex;
 
     flex-wrap:wrap;
@@ -544,6 +557,7 @@ body.dark .about-card h3{
 }
 
 .value{
+
     padding:14px 22px;
 
     border-radius:30px;
@@ -558,6 +572,7 @@ body.dark .about-card h3{
 }
 
 .value:hover{
+
     transform:translateY(-4px);
 }
 
@@ -567,13 +582,14 @@ body.dark .about-card h3{
 ========================= */
 
 .gallery-grid{
+
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px,1fr)
-        );
+    repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
 
     gap:20px;
 
@@ -581,6 +597,7 @@ body.dark .about-card h3{
 }
 
 .gallery-card{
+
     background:#eee;
 
     border-radius:20px;
@@ -588,23 +605,29 @@ body.dark .about-card h3{
     overflow:hidden;
 
     box-shadow:
-        0 8px 25px
-        rgba(0,0,0,.12);
+    0 8px 25px rgba(0,0,0,.12);
 
     transition:.4s;
 }
 
 .gallery-card:hover{
+
     transform:translateY(-5px);
 }
 
 .gallery-card img{
+
     width:100%;
 
     display:block;
+
+    min-height:200px;
+
+    object-fit:cover;
 }
 
 .gallery-card p{
+
     text-align:center;
 
     padding:15px;
@@ -618,13 +641,14 @@ body.dark .about-card h3{
 ========================= */
 
 .moments{
+
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px,1fr)
-        );
+    repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
 
     gap:20px;
 
@@ -632,8 +656,9 @@ body.dark .about-card h3{
 }
 
 .moment{
+
     border-left:
-        4px solid #d4af37;
+    4px solid #d4af37;
 
     padding:20px;
 
@@ -643,30 +668,31 @@ body.dark .about-card h3{
 }
 
 .moment h3{
+
     color:#8b0000;
 
     margin-bottom:10px;
 }
 
 body.dark .moment h3{
+
     color:#d4af37;
 }
 
 
 /* =========================
-   DESTINEE & VISION
-   VIDEO LA RETE ANNDAN SITE LA
+   DESTINÉE + VISION
 ========================= */
 
 .vision-video-section{
 
     background:
-        linear-gradient(
-            135deg,
-            #111,
-            #292929,
-            #4b3817
-        ) !important;
+    linear-gradient(
+        135deg,
+        #111,
+        #292929,
+        #4b3817
+    ) !important;
 
     color:white !important;
 
@@ -674,12 +700,14 @@ body.dark .moment h3{
 }
 
 .vision-video-section h2{
+
     color:#d4af37 !important;
 
     font-size:34px;
 }
 
 .vision-video-intro{
+
     color:#eee;
 
     max-width:800px;
@@ -698,16 +726,15 @@ body.dark .moment h3{
     border-radius:25px;
 
     background:
-        linear-gradient(
-            135deg,
-            #d4af37,
-            #8b0000,
-            #111
-        );
+    linear-gradient(
+        135deg,
+        #d4af37,
+        #8b0000,
+        #111
+    );
 
     box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.45);
+    0 15px 45px rgba(0,0,0,.45);
 }
 
 .video-box video{
@@ -740,11 +767,11 @@ body.dark .moment h3{
 .message{
 
     background:
-        linear-gradient(
-            135deg,
-            #111,
-            #292929
-        ) !important;
+    linear-gradient(
+        135deg,
+        #111,
+        #292929
+    ) !important;
 
     color:white !important;
 
@@ -752,6 +779,7 @@ body.dark .moment h3{
 }
 
 .message h2{
+
     color:#d4af37 !important;
 }
 
@@ -765,16 +793,17 @@ body.dark .moment h3{
     text-align:center;
 
     background:
-        linear-gradient(
-            135deg,
-            #111,
-            #292929
-        ) !important;
+    linear-gradient(
+        135deg,
+        #111,
+        #292929
+    ) !important;
 
     color:white !important;
 }
 
 .music-box h2{
+
     color:#d4af37 !important;
 }
 
@@ -787,12 +816,13 @@ body.dark .moment h3{
     padding:20px;
 
     background:
-        rgba(255,255,255,.08);
+    rgba(255,255,255,.08);
 
     border-radius:20px;
 }
 
 audio{
+
     width:100%;
 }
 
@@ -839,6 +869,7 @@ audio{
 ========================= */
 
 .contact-box{
+
     text-align:center;
 }
 
@@ -854,6 +885,7 @@ audio{
 }
 
 body.dark .contact-number{
+
     color:#d4af37;
 }
 
@@ -893,8 +925,7 @@ body.dark .contact-number{
     z-index:999;
 
     box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.3);
+    0 5px 20px rgba(0,0,0,.3);
 }
 
 
@@ -921,6 +952,7 @@ footer strong{
 }
 
 footer p{
+
     margin:8px;
 }
 
@@ -932,63 +964,78 @@ footer p{
 @media(max-width:600px){
 
     header{
+
         min-height:500px;
 
         padding:40px 18px;
     }
 
     .logo{
+
         font-size:40px;
 
         letter-spacing:4px;
     }
 
     .logo-image{
+
         width:95px;
+
         height:95px;
     }
 
     .name{
+
         font-size:18px;
     }
 
     .subtitle{
+
         font-size:16px;
     }
 
     .hero,
     .section{
+
         padding:28px 18px;
     }
 
     .hero h2,
     .section h2{
+
         font-size:27px;
     }
 
     nav a{
+
         padding:8px 9px;
 
         font-size:12px;
     }
 
     .btn{
+
         width:100%;
 
         max-width:300px;
     }
 
     .tedaisha-logo{
+
+        font-size:38px;
+
         letter-spacing:6px;
     }
 
     .tedaisha-subtitle{
-        padding:0 20px;
+
+        font-size:12px;
 
         letter-spacing:2px;
     }
 
     .top-tools{
+
         right:8px;
 
         top:8px;
@@ -998,12 +1045,14 @@ footer p{
 
     .tool-btn,
     .language-select{
+
         padding:8px 9px;
 
         font-size:11px;
     }
 
     .vision-video-section h2{
+
         font-size:27px;
     }
 
@@ -1017,9 +1066,7 @@ footer p{
 
 
 <!-- =====================================================
-     KÒMANSMAN SITE LA
-     TEDAISHA SÈLMAN
-     4 SEGOND
+     INTRO
 ===================================================== -->
 
 <div id="tedaisha-intro">
@@ -1037,7 +1084,7 @@ footer p{
 
 
 <!-- =====================================================
-     LANGUE + DARK MODE
+     TOOLS
 ===================================================== -->
 
 <div class="top-tools">
@@ -1078,20 +1125,14 @@ footer p{
 
 
 <!-- =====================================================
-     SIT LA
+     HEADER
 ===================================================== -->
-
-<div id="site-content">
-
-
-
-<!-- HEADER -->
 
 <header>
 
     <img
         class="logo-image"
-        src="logo-tedavision.png"
+        src="./logo-tedavision.png"
         alt="Logo Tedavision"
         onerror="this.style.display='none';">
 
@@ -1119,7 +1160,9 @@ footer p{
 
 
 
-<!-- NAVIGATION -->
+<!-- =====================================================
+     NAV
+===================================================== -->
 
 <nav>
 
@@ -1131,7 +1174,6 @@ footer p{
         Accueil
     </a>
 
-
     <a href="#apropos"
     data-fr="À propos"
     data-ht="Konsènan"
@@ -1139,7 +1181,6 @@ footer p{
     data-es="Acerca de">
         À propos
     </a>
-
 
     <a href="#histoire"
     data-fr="Son histoire"
@@ -1149,7 +1190,6 @@ footer p{
         Son histoire
     </a>
 
-
     <a href="#vision"
     data-fr="Sa vision"
     data-ht="Vizyon li"
@@ -1157,7 +1197,6 @@ footer p{
     data-es="Su visión">
         Sa vision
     </a>
-
 
     <a href="#valeurs"
     data-fr="Ses valeurs"
@@ -1167,7 +1206,6 @@ footer p{
         Ses valeurs
     </a>
 
-
     <a href="#galerie"
     data-fr="Galerie"
     data-ht="Galri"
@@ -1175,7 +1213,6 @@ footer p{
     data-es="Galería">
         Galerie
     </a>
-
 
     <a href="#moments"
     data-fr="Moments"
@@ -1185,7 +1222,6 @@ footer p{
         Moments
     </a>
 
-
     <a href="#destinee"
     data-fr="Destinée & Vision"
     data-ht="Destine & Vizyon"
@@ -1193,7 +1229,6 @@ footer p{
     data-es="Destino y Visión">
         Destinée & Vision
     </a>
-
 
     <a href="#musique"
     data-fr="Musique"
@@ -1203,7 +1238,6 @@ footer p{
         Musique
     </a>
 
-
     <a href="#messages"
     data-fr="Messages"
     data-ht="Mesaj"
@@ -1211,7 +1245,6 @@ footer p{
     data-es="Mensajes">
         Messages
     </a>
-
 
     <a href="#contact"
     data-fr="Contact"
@@ -1266,7 +1299,7 @@ footer p{
     <div class="photo-box">
 
         <img
-            src="photo.jpg"
+            src="./photo.jpg"
             alt="Ternezan Tedaisha Namara">
 
     </div>
@@ -1315,7 +1348,7 @@ footer p{
 
 
 <!-- =====================================================
-     A PROPOS
+     À PROPOS
 ===================================================== -->
 
 <section
@@ -1480,4 +1513,19 @@ footer p{
 
 
 
-<!-- ==================================
+<!-- =====================================================
+     VALEURS
+===================================================== -->
+
+<section
+    id="valeurs"
+    class="section">
+
+    <h2>
+        Ses valeurs
+    </h2>
+
+
+    <p style="text-align:center;">
+
+        Des valeurs qui représenten
