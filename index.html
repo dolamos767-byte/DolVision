@@ -1,3 +1,5 @@
+Code complet — Tedavision
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -487,6 +489,31 @@ body.dark .moment h3{
 .music-player audio{
     width:100%;
     display:block;
+}
+
+/* Bouton musique */
+
+.music-play-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:15px auto;
+    padding:15px 28px;
+    border:none;
+    border-radius:35px;
+    background:#d4af37;
+    color:#111;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 25px rgba(212,175,55,.25);
+}
+
+.music-play-button:hover{
+    transform:translateY(-3px);
+    background:#fff;
 }
 
 /* ================= FORM ================= */
@@ -989,7 +1016,18 @@ footer p{
             M vle w konnen
         </p>
 
-        <audio controls preload="metadata">
+        <!-- Bouton pour lancer la musique -->
+        <button
+            class="music-play-button"
+            type="button"
+            onclick="playMusic()">
+            ▶️ Appuyer ici pour écouter
+        </button>
+
+        <audio
+            id="tedavisionMusic"
+            controls
+            preload="metadata">
 
             <source
                 src="./Teddy_Hashtag_-_M_vle_w_Konnen(256k).mp3"
@@ -1030,55 +1068,4 @@ footer p{
         <div class="buttons">
 
             <button
-                class="btn"
-                type="button"
-                onclick="alert('Le système de messages sera connecté prochainement.')">
-
-                💌 Envoyer le message
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section contact-box">
-
-    <h2>📞 Contact</h2>
-
-    <p>
-        Pour contacter Tedavision,
-        utilisez le bouton ci-dessous.
-    </p>
-
-    <div class="buttons">
-
-        <a class="btn" href="tel:+50934850736">
-            📞 Tedavision
-        </a>
-
-    </div>
-
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer>
-
-    <p>
-        <strong>Tedavision</strong>
-    </p>
-
-    <p>
-        Ternezan Tedaisha Namara
-    </p>
-
-    <p>
-        Courage • Vision • Résilience • Détermination
-    </p>
-
-</footer
+               
