@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tedavision | Ternezan Tedaisha Namara</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Tedavision | Ternezan Tedaisha Namara
+</title>
+
 
 <style>
 
-/* =========================
+/* =====================================================
    GENERAL
-========================= */
+===================================================== */
 
 *{
     margin:0;
@@ -48,48 +55,64 @@ body.dark .moment{
 }
 
 
-/* =========================
-   VIDEO INTRO
-========================= */
+/* =====================================================
+   INTRO VIDEO
+===================================================== */
 
 #intro-screen{
+
     position:fixed;
+
     inset:0;
+
+    width:100%;
+    height:100%;
+
     z-index:999999;
+
     background:#000;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     overflow:hidden;
 }
 
+
+/* VIDEO INTRO */
+
 #intro-video{
+
     width:100%;
     height:100%;
+
     object-fit:contain;
+
     background:#000;
 }
 
 
-/* BUTTON PASSER */
+/* BOUTON PASSER */
 
 #skip-video{
+
     position:absolute;
 
     right:20px;
     bottom:25px;
 
-    z-index:10;
+    z-index:1000000;
+
+    padding:14px 23px;
 
     border:none;
 
-    padding:13px 22px;
-
     border-radius:30px;
 
-    background:rgba(212,175,55,.95);
+    background:#d4af37;
 
     color:#111;
 
@@ -99,28 +122,34 @@ body.dark .moment{
 
     cursor:pointer;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.5);
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.6);
 
     transition:.3s;
 }
 
 #skip-video:hover{
+
+    background:white;
+
     transform:scale(1.05);
-    background:#fff;
 }
 
 
-/* =========================
-   TEDAISHA SCREEN
-========================= */
+/* =====================================================
+   TEDAISHA GRAND SCREEN
+===================================================== */
 
 #tedaisha-screen{
+
     position:absolute;
+
     inset:0;
 
     display:none;
 
     justify-content:center;
+
     align-items:center;
 
     flex-direction:column;
@@ -130,44 +159,60 @@ body.dark .moment{
     background:
         radial-gradient(
             circle at center,
-            #80632a 0%,
-            #2a210f 28%,
-            #111 60%,
+            #8b6b32 0%,
+            #4d3b18 20%,
+            #1d1d1d 50%,
             #000 100%
         );
 }
 
 #tedaisha-screen.show{
+
     display:flex;
-    animation:screenAppear 1s ease forwards;
+
+    animation:
+        tadaishaScreenIn 1s ease forwards;
 }
 
+
+/* TEDAISHA */
+
 .tedaisha-title{
+
     color:#d4af37;
 
     font-size:
-        clamp(50px,14vw,150px);
+        clamp(55px,15vw,160px);
 
     font-weight:900;
 
-    letter-spacing:
-        clamp(5px,2vw,22px);
+    letter-spacing:12px;
 
     opacity:0;
 
-    transform:scale(.25);
+    transform:scale(.2);
 
-    filter:blur(15px);
+    filter:blur(20px);
 
     text-shadow:
-        0 0 15px rgba(212,175,55,.9),
-        0 0 40px rgba(212,175,55,.9),
-        0 0 90px rgba(212,175,55,.8);
 
-    animation:tedaishaIn 2.2s ease forwards;
+        0 0 15px #d4af37,
+
+        0 0 35px #d4af37,
+
+        0 0 70px #d4af37,
+
+        0 0 120px rgba(212,175,55,.8);
+
+    animation:
+        tedaishaEffect 2.3s ease forwards;
 }
 
+
+/* NOM COMPLET */
+
 .tedaisha-name{
+
     color:white;
 
     font-size:
@@ -175,16 +220,18 @@ body.dark .moment{
 
     letter-spacing:4px;
 
-    margin-top:15px;
+    margin-top:18px;
 
     opacity:0;
 
-    transform:translateY(25px);
+    transform:translateY(30px);
 
-    animation:nameIn 1.2s ease 1s forwards;
+    animation:
+        nameEffect 1.2s ease 1s forwards;
 }
 
-@keyframes screenAppear{
+
+@keyframes tadaishaScreenIn{
 
     from{
         opacity:0;
@@ -195,77 +242,108 @@ body.dark .moment{
     }
 }
 
-@keyframes tedaishaIn{
+
+@keyframes tedaishaEffect{
 
     0%{
+
         opacity:0;
-        transform:scale(.25);
-        filter:blur(15px);
-        letter-spacing:35px;
+
+        transform:scale(.2);
+
+        filter:blur(20px);
+
+        letter-spacing:40px;
     }
 
-    55%{
+    45%{
+
         opacity:1;
-        transform:scale(1.12);
+
+        transform:scale(1.15);
+
         filter:blur(0);
+    }
+
+    70%{
+
+        transform:scale(.95);
     }
 
     100%{
+
         opacity:1;
+
         transform:scale(1);
+
         filter:blur(0);
+
         letter-spacing:
             clamp(5px,2vw,22px);
     }
 }
 
-@keyframes nameIn{
+
+@keyframes nameEffect{
 
     from{
+
         opacity:0;
-        transform:translateY(25px);
+
+        transform:translateY(30px);
     }
 
     to{
+
         opacity:1;
+
         transform:translateY(0);
     }
 }
 
 
-/* =========================
-   SITE APPEAR
-========================= */
+/* =====================================================
+   SIT PRINCIPAL
+===================================================== */
 
 #site-content{
+
     display:none;
 }
 
 #site-content.visible{
+
     display:block;
 
-    animation:siteAppear 1.2s ease forwards;
+    animation:
+        siteAppear 1.2s ease forwards;
 }
+
 
 @keyframes siteAppear{
 
     from{
+
         opacity:0;
+
         transform:translateY(25px);
     }
 
     to{
+
         opacity:1;
+
         transform:translateY(0);
     }
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header{
+
     min-height:520px;
 
     display:flex;
@@ -295,7 +373,9 @@ header{
     overflow:hidden;
 }
 
+
 .logo-image{
+
     width:120px;
     height:120px;
 
@@ -306,7 +386,9 @@ header{
     border-radius:25px;
 }
 
+
 .logo{
+
     font-size:58px;
 
     font-weight:bold;
@@ -316,7 +398,9 @@ header{
     animation:glow 3s infinite;
 }
 
+
 .line{
+
     width:100px;
 
     height:3px;
@@ -326,7 +410,9 @@ header{
     margin:22px auto;
 }
 
+
 .name{
+
     font-size:23px;
 
     letter-spacing:3px;
@@ -334,7 +420,9 @@ header{
     margin-bottom:18px;
 }
 
+
 .subtitle{
+
     max-width:720px;
 
     font-size:19px;
@@ -344,29 +432,34 @@ header{
     color:#e8e8e8;
 }
 
+
 @keyframes glow{
 
     0%,100%{
+
         text-shadow:
-            0 0 5px rgba(212,175,55,.2);
+            0 0 5px
+            rgba(212,175,55,.2);
     }
 
     50%{
+
         text-shadow:
-            0 0 25px rgba(212,175,55,.7);
+            0 0 25px
+            rgba(212,175,55,.7);
     }
 }
 
 
-/* =========================
+/* =====================================================
    TOOLS
-========================= */
+===================================================== */
 
 .top-tools{
+
     position:fixed;
 
     top:15px;
-
     right:15px;
 
     z-index:2000;
@@ -376,8 +469,10 @@ header{
     gap:8px;
 }
 
+
 .tool-btn,
 .language-select{
+
     border:none;
 
     padding:10px 13px;
@@ -394,28 +489,33 @@ header{
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* =====================================================
+   NAV
+===================================================== */
 
 nav{
+
     position:sticky;
 
     top:0;
 
     z-index:1000;
 
-    background:rgba(17,17,17,.97);
+    background:
+        rgba(17,17,17,.97);
 
     padding:13px 8px;
 
     text-align:center;
 
     box-shadow:
-        0 3px 18px rgba(0,0,0,.3);
+        0 3px 18px
+        rgba(0,0,0,.3);
 }
 
+
 nav a{
+
     display:inline-block;
 
     color:white;
@@ -433,18 +533,21 @@ nav a{
     transition:.3s;
 }
 
+
 nav a:hover{
+
     background:#d4af37;
 
     color:#111;
 }
 
 
-/* =========================
+/* =====================================================
    CONTAINER
-========================= */
+===================================================== */
 
 .container{
+
     max-width:1100px;
 
     margin:auto;
@@ -452,8 +555,10 @@ nav a:hover{
     padding:50px 20px;
 }
 
+
 .hero,
 .section{
+
     background:white;
 
     border-radius:28px;
@@ -463,17 +568,23 @@ nav a:hover{
     margin-bottom:35px;
 
     box-shadow:
-        0 10px 35px rgba(0,0,0,.12);
+        0 10px 35px
+        rgba(0,0,0,.12);
 
-    animation:fadeUp .8s ease;
+    animation:
+        fadeUp .8s ease;
 }
 
+
 .hero{
+
     text-align:center;
 }
 
+
 .hero h2,
 .section h2{
+
     color:#8b0000;
 
     text-align:center;
@@ -481,17 +592,23 @@ nav a:hover{
     margin-bottom:20px;
 }
 
+
 body.dark .hero h2,
 body.dark .section h2{
+
     color:#d4af37;
 }
 
+
 .hero h2{
+
     font-size:34px;
 }
 
+
 .hero p,
 .section p{
+
     line-height:1.9;
 
     font-size:17px;
@@ -501,15 +618,18 @@ body.dark .section h2{
     max-width:800px;
 }
 
+
 @keyframes fadeUp{
 
     from{
+
         opacity:0;
 
         transform:translateY(30px);
     }
 
     to{
+
         opacity:1;
 
         transform:translateY(0);
@@ -517,11 +637,12 @@ body.dark .section h2{
 }
 
 
-/* =========================
+/* =====================================================
    PHOTO
-========================= */
+===================================================== */
 
 .photo-box{
+
     width:100%;
 
     max-width:520px;
@@ -533,23 +654,27 @@ body.dark .section h2{
     overflow:hidden;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.25);
+        0 12px 35px
+        rgba(0,0,0,.25);
 
     border:5px solid white;
 }
 
+
 .photo-box img{
+
     width:100%;
 
     display:block;
 }
 
 
-/* =========================
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 .buttons{
+
     display:flex;
 
     flex-wrap:wrap;
@@ -561,7 +686,9 @@ body.dark .section h2{
     margin-top:30px;
 }
 
+
 .btn{
+
     display:inline-block;
 
     padding:14px 24px;
@@ -583,7 +710,9 @@ body.dark .section h2{
     cursor:pointer;
 }
 
+
 .btn:hover{
+
     background:#d4af37;
 
     color:#111;
@@ -592,22 +721,28 @@ body.dark .section h2{
 }
 
 
-/* =========================
+/* =====================================================
    ABOUT
-========================= */
+===================================================== */
 
 .about-grid{
+
     display:grid;
 
     grid-template-columns:
-        repeat(auto-fit,minmax(220px,1fr));
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
+        );
 
     gap:20px;
 
     margin-top:25px;
 }
 
+
 .about-card{
+
     padding:25px;
 
     border-radius:20px;
@@ -617,22 +752,27 @@ body.dark .section h2{
     text-align:center;
 }
 
+
 .about-card h3{
+
     color:#8b0000;
 
     margin-bottom:12px;
 }
 
+
 body.dark .about-card h3{
+
     color:#d4af37;
 }
 
 
-/* =========================
+/* =====================================================
    VALUES
-========================= */
+===================================================== */
 
 .values{
+
     display:flex;
 
     flex-wrap:wrap;
@@ -642,7 +782,9 @@ body.dark .about-card h3{
     gap:15px;
 }
 
+
 .value{
+
     padding:14px 22px;
 
     border-radius:30px;
@@ -656,27 +798,35 @@ body.dark .about-card h3{
     transition:.3s;
 }
 
+
 .value:hover{
+
     transform:translateY(-4px);
 }
 
 
-/* =========================
-   GALLERY
-========================= */
+/* =====================================================
+   GALERIE
+===================================================== */
 
 .gallery-grid{
+
     display:grid;
 
     grid-template-columns:
-        repeat(auto-fit,minmax(220px,1fr));
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
+        );
 
     gap:20px;
 
     margin-top:25px;
 }
 
+
 .gallery-card{
+
     background:#eee;
 
     border-radius:20px;
@@ -684,22 +834,29 @@ body.dark .about-card h3{
     overflow:hidden;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,.12);
+        0 8px 25px
+        rgba(0,0,0,.12);
 
     transition:.4s;
 }
 
+
 .gallery-card:hover{
+
     transform:translateY(-5px);
 }
 
+
 .gallery-card img{
+
     width:100%;
 
     display:block;
 }
 
+
 .gallery-card p{
+
     text-align:center;
 
     padding:15px;
@@ -708,23 +865,30 @@ body.dark .about-card h3{
 }
 
 
-/* =========================
+/* =====================================================
    MOMENTS
-========================= */
+===================================================== */
 
 .moments{
+
     display:grid;
 
     grid-template-columns:
-        repeat(auto-fit,minmax(220px,1fr));
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
+        );
 
     gap:20px;
 
     margin-top:25px;
 }
 
+
 .moment{
-    border-left:4px solid #d4af37;
+
+    border-left:
+        4px solid #d4af37;
 
     padding:20px;
 
@@ -733,29 +897,100 @@ body.dark .about-card h3{
     border-radius:15px;
 }
 
+
 .moment h3{
+
     color:#8b0000;
 
     margin-bottom:10px;
 }
 
+
 body.dark .moment h3{
+
     color:#d4af37;
 }
 
 
-/* =========================
+/* =====================================================
+   DISCOURS
+===================================================== */
+
+.discours-box{
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111,
+            #292929
+        ) !important;
+
+    color:white !important;
+}
+
+
+.discours-box h2{
+
+    color:#d4af37 !important;
+}
+
+
+.discours-intro{
+
+    max-width:800px;
+
+    margin:0 auto 20px;
+
+    color:#eee;
+}
+
+
+.discours-player{
+
+    max-width:800px;
+
+    margin:25px auto;
+
+    padding:20px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border-radius:20px;
+}
+
+
+.discours-player video{
+
+    width:100%;
+
+    max-height:550px;
+
+    display:block;
+
+    border-radius:15px;
+
+    background:#000;
+}
+
+
+/* =====================================================
    FORM
-========================= */
+===================================================== */
 
 .message-form{
+
     max-width:700px;
 
     margin:25px auto;
 }
 
+
 .message-form input,
 .message-form textarea{
+
     width:100%;
 
     padding:15px;
@@ -771,18 +1006,21 @@ body.dark .moment h3{
     font-family:Arial;
 }
 
+
 .message-form textarea{
+
     min-height:140px;
 
     resize:vertical;
 }
 
 
-/* =========================
+/* =====================================================
    MUSIC
-========================= */
+===================================================== */
 
 .music-box{
+
     text-align:center;
 
     background:
@@ -790,41 +1028,51 @@ body.dark .moment h3{
             135deg,
             #111,
             #292929
-        )!important;
+        ) !important;
 
-    color:white!important;
+    color:white !important;
 }
+
 
 .music-box h2{
-    color:#d4af37!important;
+
+    color:#d4af37 !important;
 }
 
+
 .music-player{
+
     max-width:650px;
 
     margin:25px auto;
 
     padding:20px;
 
-    background:rgba(255,255,255,.08);
+    background:
+        rgba(255,255,255,.08);
 
     border-radius:20px;
 }
 
+
 audio{
+
     width:100%;
 }
 
 
-/* =========================
+/* =====================================================
    CONTACT
-========================= */
+===================================================== */
 
 .contact-box{
+
     text-align:center;
 }
 
+
 .contact-number{
+
     color:#8b0000;
 
     font-size:25px;
@@ -834,38 +1082,44 @@ audio{
     margin:20px;
 }
 
+
 body.dark .contact-number{
+
     color:#d4af37;
 }
 
 
-/* =========================
-   MESSAGE
-========================= */
+/* =====================================================
+   MESSAGE COURAGE
+===================================================== */
 
 .message{
+
     background:
         linear-gradient(
             135deg,
             #111,
             #292929
-        )!important;
+        ) !important;
 
-    color:white!important;
+    color:white !important;
 
     text-align:center;
 }
 
+
 .message h2{
-    color:#d4af37!important;
+
+    color:#d4af37 !important;
 }
 
 
-/* =========================
-   TOP
-========================= */
+/* =====================================================
+   TOP BUTTON
+===================================================== */
 
 .top-button{
+
     position:fixed;
 
     bottom:20px;
@@ -895,15 +1149,17 @@ body.dark .contact-number{
     z-index:999;
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,.3);
+        0 5px 20px
+        rgba(0,0,0,.3);
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
+
     background:#111;
 
     color:white;
@@ -913,72 +1169,95 @@ footer{
     padding:35px 20px;
 }
 
+
 footer strong{
+
     color:#d4af37;
 
     font-size:22px;
 }
 
+
 footer p{
+
     margin:8px;
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:600px){
 
     header{
+
         min-height:500px;
 
         padding:40px 18px;
     }
 
+
     .logo{
+
         font-size:40px;
 
         letter-spacing:4px;
     }
 
+
     .logo-image{
+
         width:95px;
 
         height:95px;
     }
 
+
     .name{
+
         font-size:18px;
     }
 
+
     .subtitle{
+
         font-size:16px;
     }
 
+
     .hero,
     .section{
+
         padding:28px 18px;
     }
 
+
     .hero h2,
     .section h2{
+
         font-size:27px;
     }
 
+
     nav a{
+
         padding:8px 9px;
 
         font-size:12px;
     }
 
+
     .btn{
+
         width:100%;
 
         max-width:300px;
     }
 
+
     .top-tools{
+
         right:8px;
 
         top:8px;
@@ -986,14 +1265,18 @@ footer p{
         gap:5px;
     }
 
+
     .tool-btn,
     .language-select{
+
         padding:8px 9px;
 
         font-size:11px;
     }
 
+
     #skip-video{
+
         right:12px;
 
         bottom:15px;
@@ -1003,29 +1286,36 @@ footer p{
         font-size:13px;
     }
 
+
     .tedaisha-name{
+
         letter-spacing:2px;
+
+        padding:0 15px;
     }
+
 }
 
 </style>
+
 </head>
 
 
 <body id="top">
 
 
-<!-- ==================================================
-     VIDEO INTRO
-================================================== -->
+<!-- =====================================================
+     INTRODUCTION SPECIALE
+===================================================== -->
 
 <div id="intro-screen">
+
 
     <video
         id="intro-video"
         playsinline
-        preload="auto"
-        controls>
+        controls
+        preload="metadata">
 
         <source
             src="1787073839108.mp4"
@@ -1037,28 +1327,44 @@ footer p{
     </video>
 
 
-    <!-- Moun ki pa vle tande a ka pase -->
+    <!--
+       Moun ki vle tande diskou a
+       ka kite videyo a jwe.
+
+       Moun ki pa vle tande a
+       ka peze bouton sa a.
+    -->
 
     <button
         id="skip-video"
         type="button">
 
-        ⏭️ Passer la vidéo
+        ⏭️ Passer
 
     </button>
 
 
-    <!-- Tedaisha ap parèt apre videyo a -->
+    <!--
+       Apre videyo a oswa Passer,
+       TEDAISHA parèt.
+    -->
 
     <div id="tedaisha-screen">
 
+
         <div class="tedaisha-title">
+
             TEDAISHA
+
         </div>
 
+
         <div class="tedaisha-name">
+
             TERNEZAN TEDAISHA NAMARA
+
         </div>
+
 
     </div>
 
@@ -1066,16 +1372,19 @@ footer p{
 
 
 
-<!-- ==================================================
-     SITE PRINCIPAL
-================================================== -->
+<!-- =====================================================
+     TOUT SIT LA
+===================================================== -->
 
 <div id="site-content">
 
 
-<!-- TOOLS -->
+<!-- =====================================================
+     LANGUAGE + DARK MODE
+===================================================== -->
 
 <div class="top-tools">
+
 
     <button
         class="tool-btn"
@@ -1112,9 +1421,12 @@ footer p{
 
 
 
-<!-- HEADER -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
+
 
     <img
         class="logo-image"
@@ -1124,7 +1436,9 @@ footer p{
 
 
     <div class="logo">
+
         TEDAVISION
+
     </div>
 
 
@@ -1132,132 +1446,192 @@ footer p{
 
 
     <div class="name">
+
         Ternezan Tedaisha Namara
+
     </div>
 
 
     <div class="subtitle">
+
         Une histoire de courage,
         de résilience,
         de dignité et de détermination.
+
     </div>
 
 </header>
 
 
 
-<!-- NAV -->
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
 <nav>
 
-    <a href="#accueil"
-       data-fr="Accueil"
-       data-ht="Akèy"
-       data-en="Home"
-       data-es="Inicio">
-       Accueil
+
+    <a
+        href="#accueil"
+        data-fr="Accueil"
+        data-ht="Akèy"
+        data-en="Home"
+        data-es="Inicio">
+
+        Accueil
+
     </a>
 
 
-    <a href="#apropos"
-       data-fr="À propos"
-       data-ht="Konsènan"
-       data-en="About"
-       data-es="Acerca de">
-       À propos
+    <a
+        href="#apropos"
+        data-fr="À propos"
+        data-ht="Konsènan"
+        data-en="About"
+        data-es="Acerca de">
+
+        À propos
+
     </a>
 
 
-    <a href="#histoire"
-       data-fr="Son histoire"
-       data-ht="Istwa li"
-       data-en="Her story"
-       data-es="Su historia">
-       Son histoire
+    <a
+        href="#histoire"
+        data-fr="Son histoire"
+        data-ht="Istwa li"
+        data-en="Her story"
+        data-es="Su historia">
+
+        Son histoire
+
     </a>
 
 
-    <a href="#vision"
-       data-fr="Sa vision"
-       data-ht="Vizyon li"
-       data-en="Her vision"
-       data-es="Su visión">
-       Sa vision
+    <a
+        href="#vision"
+        data-fr="Sa vision"
+        data-ht="Vizyon li"
+        data-en="Her vision"
+        data-es="Su visión">
+
+        Sa vision
+
     </a>
 
 
-    <a href="#valeurs"
-       data-fr="Ses valeurs"
-       data-ht="Valè li"
-       data-en="Her values"
-       data-es="Sus valores">
-       Ses valeurs
+    <a
+        href="#valeurs"
+        data-fr="Ses valeurs"
+        data-ht="Valè li"
+        data-en="Her values"
+        data-es="Sus valores">
+
+        Ses valeurs
+
     </a>
 
 
-    <a href="#galerie"
-       data-fr="Galerie"
-       data-ht="Galri"
-       data-en="Gallery"
-       data-es="Galería">
-       Galerie
+    <a
+        href="#galerie"
+        data-fr="Galerie"
+        data-ht="Galri"
+        data-en="Gallery"
+        data-es="Galería">
+
+        Galerie
+
     </a>
 
 
-    <a href="#moments"
-       data-fr="Moments"
-       data-ht="Moman"
-       data-en="Moments"
-       data-es="Momentos">
-       Moments
+    <a
+        href="#moments"
+        data-fr="Moments"
+        data-ht="Moman"
+        data-en="Moments"
+        data-es="Momentos">
+
+        Moments
+
     </a>
 
 
-    <a href="#musique"
-       data-fr="Musique"
-       data-ht="Mizik"
-       data-en="Music"
-       data-es="Música">
-       Musique
+    <a
+        href="#discours"
+        data-fr="Discours"
+        data-ht="Diskou"
+        data-en="Speech"
+        data-es="Discurso">
+
+        🎥 Discours
+
     </a>
 
 
-    <a href="#messages"
-       data-fr="Messages"
-       data-ht="Mesaj"
-       data-en="Messages"
-       data-es="Mensajes">
-       Messages
+    <a
+        href="#musique"
+        data-fr="Musique"
+        data-ht="Mizik"
+        data-en="Music"
+        data-es="Música">
+
+        Musique
+
     </a>
 
 
-    <a href="#contact"
-       data-fr="Contact"
-       data-ht="Kontak"
-       data-en="Contact"
-       data-es="Contacto">
-       Contact
+    <a
+        href="#messages"
+        data-fr="Messages"
+        data-ht="Mesaj"
+        data-en="Messages"
+        data-es="Mensajes">
+
+        Messages
+
     </a>
+
+
+    <a
+        href="#contact"
+        data-fr="Contact"
+        data-ht="Kontak"
+        data-en="Contact"
+        data-es="Contacto">
+
+        Contact
+
+    </a>
+
 
 </nav>
 
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main class="container">
 
 
-<!-- ACCUEIL -->
+
+<!-- =====================================================
+     ACCUEIL
+===================================================== -->
 
 <section
     id="accueil"
     class="hero">
 
-    <h2 class="welcome-title">
+
+    <h2>
+
         Bienvenue sur Tedavision
+
     </h2>
 
 
-    <p class="welcome-text">
+    <p>
 
         Découvrez l'univers de
         <strong>
@@ -1269,223 +1643,7 @@ footer p{
     </p>
 
 
-    <p class="welcome-text2">
+    <p>
 
         Derrière chaque épreuve se trouve une leçon,
-        derrière chaque difficulté se trouve une force,
-        et derrière chaque rêve se trouve une volonté
-        d'avancer.
-
-    </p>
-
-
-    <div class="photo-box">
-
-        <img
-            src="photo.jpg"
-            alt="Ternezan Tedaisha Namara">
-
-    </div>
-
-
-    <div class="buttons">
-
-        <a
-            class="btn"
-            href="#histoire"
-            data-fr="Découvrir son histoire"
-            data-ht="Dekouvri istwa li"
-            data-en="Discover her story"
-            data-es="Descubrir su historia">
-
-            Découvrir son histoire
-
-        </a>
-
-
-        <a
-            class="btn"
-            href="#vision"
-            data-fr="Découvrir sa vision"
-            data-ht="Dekouvri vizyon li"
-            data-en="Discover her vision"
-            data-es="Descubrir su visión">
-
-            Découvrir sa vision
-
-        </a>
-
-
-        <a
-            class="btn"
-            href="tel:+50934850736"
-            data-fr="📞 Contacter"
-            data-ht="📞 Kontakte"
-            data-en="📞 Contact"
-            data-es="📞 Contactar">
-
-            📞 Contacter
-
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- A PROPOS -->
-
-<section
-    id="apropos"
-    class="section">
-
-    <h2>
-        ⭐ À propos de Tedavision
-    </h2>
-
-
-    <p style="text-align:center;">
-
-        Tedavision est un espace consacré
-        à l'histoire, à la force et aux valeurs
-        de Ternezan Tedaisha Namara.
-
-    </p>
-
-
-    <div class="about-grid">
-
-
-        <div class="about-card">
-
-            <h3>
-                Notre objectif
-            </h3>
-
-            <p>
-                Partager un message positif,
-                inspirant et rempli d'espoir.
-            </p>
-
-        </div>
-
-
-        <div class="about-card">
-
-            <h3>
-                Notre vision
-            </h3>
-
-            <p>
-                Mettre en valeur la détermination,
-                la dignité et la persévérance.
-            </p>
-
-        </div>
-
-
-        <div class="about-card">
-
-            <h3>
-                Notre message
-            </h3>
-
-            <p>
-                Chaque difficulté peut devenir
-                une nouvelle source de force.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- HISTOIRE -->
-
-<section
-    id="histoire"
-    class="section">
-
-    <h2>
-        Son histoire
-    </h2>
-
-
-    <p>
-        L'histoire de Ternezan Tedaisha Namara
-        est celle d'une femme qui avance
-        avec courage et détermination.
-    </p>
-
-
-    <p>
-        Les difficultés de la vie peuvent parfois
-        mettre la force d'une personne à l'épreuve.
-        Mais certaines personnes choisissent
-        de continuer à avancer.
-    </p>
-
-
-    <p>
-        Son parcours représente la résilience,
-        la patience, la dignité et la volonté
-        de ne jamais abandonner ses rêves.
-    </p>
-
-</section>
-
-
-
-<!-- VISION -->
-
-<section
-    id="vision"
-    class="section">
-
-    <h2>
-        Sa vision
-    </h2>
-
-
-    <p>
-        La vision de Tedavision est de transmettre
-        un message positif, rempli d'espoir,
-        de courage et de confiance.
-    </p>
-
-
-    <p>
-        Chaque personne possède une lumière
-        intérieure. Même lorsque le chemin devient
-        difficile, il est toujours possible
-        de continuer à avancer.
-    </p>
-
-
-    <p>
-        Tedavision veut être un espace où la force,
-        la beauté intérieure et la détermination
-        sont mises en valeur.
-    </p>
-
-</section>
-
-
-
-<!-- VALEURS -->
-
-<section
-    id="valeurs"
-    class="section">
-
-    <h2>
-        Ses valeurs
-    </h2>
-
-
-    <p sty
+        derriè
